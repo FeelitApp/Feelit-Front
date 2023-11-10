@@ -5,5 +5,8 @@ const route = useRoute()
 <template>
   <div>
     <Container><Hero/></Container>
+    <div class="font-grotesk">
+      Hello
+    </div>
   </div>
 </template>

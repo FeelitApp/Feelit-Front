@@ -1,7 +1,1 @@
-@font-face {
-    font-family: 'space_grotesk';
-    src: url('../fonts/SpaceGrotesk-Bold.ttf') format('ttf'),
-    url('../fonts/SpaceGrotesk-Regular.ttf') format('tff');
-    font-weight: normal;
-    font-style: normal;
-}
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400&display=swap');

@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        'grotesk' : ['space_grotesk',],
+        'grotesk' : ['Space Grotesk'],
       },
       colors: {
         'light-pink': '#FFEAF8',
