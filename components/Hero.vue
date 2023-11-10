@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-[url('/bg_hero.svg')] bg-no-repeat bg-cover">
+  <div class="bg-[url('/bg_hero.svg')] bg-no-repeat bg-cover border-b-2 border-black">
     <div class="flex flex-col lg:flex-row gap-8 justify-center items-center px-10 py-6 lg:px-20 lg:py-10">
 
       <img src="/logo_feelit_green.svg" class="w-52 object-contain"/>
