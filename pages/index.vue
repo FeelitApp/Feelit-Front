@@ -74,6 +74,7 @@ const route = useRoute()
           </Card>
         </div>
       </div>
+      <Footer/>
   </Container>
   </div>
 </template>
