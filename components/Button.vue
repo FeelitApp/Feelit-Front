@@ -1,7 +1,7 @@
 <template>
     <div :style="`background-color: ${props.color}`" class="rounded-3xl border-2 w-fit border-black shadow-[4px_4px_0_rgba(0,0,0,1)] px-3 py-2 flex">
         <p class="font-grotesk">{{ props.content }}</p>
-        <img :src="props.icon" class="pl-2" />
+        <img v-if="props.iconStatus" :src="props.icon" class="w-5 h-5 m-auto ml-1" />
     </div>
 </template>
 
@@ -18,5 +18,8 @@ const props = defineProps({
     icon: {
         type: String,
     },
+    iconStatus: {
+        type: Boolean,
+    }
 })
 </script>

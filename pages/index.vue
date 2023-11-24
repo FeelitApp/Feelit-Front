@@ -50,6 +50,7 @@ const route = useRoute()
                 :color="'#FFFFF'"
                 :content="'En savoir plus'"
                 :icon="'/arrow.svg'"
+                :iconStatus ="true"
             />
           </div>
         </div>
@@ -68,6 +69,7 @@ const route = useRoute()
             <Button
                 :color="'#93ECEE'"
                 :content="'Commencer'"
+                :iconStatus ="false"
             />
           </Card>
         </div>
