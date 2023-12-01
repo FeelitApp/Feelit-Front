@@ -6,7 +6,7 @@ const route = useRoute()
   <div>
     <Container>
       <Hero/>
-      <div class="container flex flex-col px-10 pt-10 pb-12 mx-auto gap-8 lg:pt-20 lg:pb-0 lg:px-48">
+      <div class="container flex flex-col px-10 pt-10 pb-12 mx-auto gap-8 lg:pt-20 lg:pb-0 lg:px-40">
 
         <div class="flex flex-col gap-4 font-grotesk text-md lg:text-lg">
           <p>
@@ -55,7 +55,7 @@ const route = useRoute()
         </div>
 
         <div class="flex flex-col items-center lg:py-20 lg:relative lg:block lg:mt-0">
-          <div class="transform translate-y-8 -top-2 -left-24 w-[12rem] -rotate-12 lg:absolute g:translate-y-0">
+          <div class="transform translate-y-8 -top-8 -left-24 w-[12rem] -rotate-12 lg:absolute g:translate-y-0">
             <Illu
                 :illu="'/vinny.jpeg'"
             />
