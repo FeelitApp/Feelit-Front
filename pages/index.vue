@@ -3,7 +3,8 @@ const route = useRoute()
 </script>
 
 <template>
-  <div>
+  <div class="relative">
+    <LoginCard/>
     <Container>
       <Hero/>
       <div class="container flex flex-col px-10 pt-10 pb-12 mx-auto gap-8 lg:pt-20 lg:pb-0 lg:px-40">
@@ -29,7 +30,7 @@ const route = useRoute()
                 :button="false"
             />
           </div>
-          <div class="lg:absolute lg:bottom-0 lg:left-56">
+          <div class="lg:absolute lg:bottom-0 lg:left-60">
             <Card
                 :color="'#CEFF1B'"
                 :title="'Emotions'"

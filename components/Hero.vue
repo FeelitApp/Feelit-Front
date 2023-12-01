@@ -4,7 +4,7 @@
 
       <img src="/logo_feelit_green.svg" class="object-contain w-52"/>
 
-      <div class="flex flex-col text-2xl font-semibold text-black font-grotesk lg:text-4xl gap-2">
+      <div class="flex flex-col text-2xl font-medium text-black font-grotesk lg:text-4xl gap-2">
         <h1 class="px-1 py-1 bg-white w-fit">
           Apprenez à identifier
         </h1>
