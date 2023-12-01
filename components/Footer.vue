@@ -1,6 +1,6 @@
 <template>
 
-    <div class="flex flex-row flex-wrap items-center justify-between p-10 bg-light-pink gap-5 wrap lg:bg-white lg:flex-row lg:px-48">
+    <div class="flex flex-row flex-wrap items-center justify-between px-10 py-10 lg:px-40 lg:pt-0 lg:pb-16 bg-light-pink gap-5 wrap lg:bg-white lg:flex-row">
         <Button
             :color="'#FFF'"
             :content="'Glossaire'"
@@ -14,6 +14,6 @@
             :content="'Mentions légales'"
             
         />
-        <img src="/logo_feelit_white.svg" class="object-contain w-20"/>
+        <img src="/logo_feelit_green.svg" class="object-contain w-20"/>
     </div>
 </template>
