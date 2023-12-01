@@ -1,14 +1,14 @@
 <template>
   <div class="bg-[url('/bg_hero.svg')] bg-no-repeat bg-cover border-b-2 border-black">
-    <div class="flex flex-col lg:flex-row gap-4 lg:gap-8 justify-center items-center px-10 py-6 lg:px-20 lg:py-10">
+    <div class="flex flex-col items-center justify-center px-10 py-6 lg:flex-row gap-4 lg:gap-8 lg:px-20 lg:py-10">
 
-      <img src="/logo_feelit_green.svg" class="w-52 object-contain"/>
+      <img src="/logo_feelit_green.svg" class="object-contain w-52"/>
 
-      <div class="text-black font-grotesk text-2xl lg:text-4xl flex flex-col gap-2 font-semibold">
-        <h1 class="bg-white px-1 py-1 w-fit">
+      <div class="flex flex-col text-2xl font-semibold text-black font-grotesk lg:text-4xl gap-2">
+        <h1 class="px-1 py-1 bg-white w-fit">
           Apprenez à identifier
         </h1>
-        <h1 class="bg-white px-1 py-1">
+        <h1 class="px-1 py-1 bg-white">
           et décoder vos émotions
         </h1>
       </div>

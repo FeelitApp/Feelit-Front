@@ -6,9 +6,9 @@ const route = useRoute()
   <div>
     <Container>
       <Hero/>
-      <div class="container flex flex-col mx-auto px-10 lg:px-48 py-10 lg:py-20 gap-8">
+      <div class="container flex flex-col px-10 pt-10 pb-12 mx-auto gap-8 lg:pt-20 lg:pb-0 lg:px-48">
 
-        <div class="font-grotesk text-md lg:text-lg flex flex-col gap-4">
+        <div class="flex flex-col gap-4 font-grotesk text-md lg:text-lg">
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur nibh lacus, vehicula vitae aliquet ut,
             gravida sed tortor. Aliquam convallis porta tincidunt. In hendrerit ligula a lorem rutrum hendrerit. Morbi
@@ -20,7 +20,7 @@ const route = useRoute()
           </p>
         </div>
 
-        <div class="lg:relative flex flex-col lg:flex-row lg:pb-10 lg:h-[20rem] gap-8">
+        <div class="flex flex-col gap-8 lg:relative lg:flex-row lg:pb-10 lg:h-[20rem]">
           <div class="lg:absolute lg:top-4 lg:left-0">
             <Card
                 :color="'#FACDEB'"
@@ -45,18 +45,17 @@ const route = useRoute()
                 :button="false"
             />
           </div>
-          <div class="mx-auto lg:absolute bottom-0 right-0">
+          <div class="bottom-0 right-0 mx-auto lg:absolute">
             <Button
                 :color="'#FFFFF'"
                 :content="'En savoir plus'"
                 :icon="'/arrow.svg'"
-                :iconStatus ="true"
             />
           </div>
         </div>
 
-        <div class="lg:py-20 lg:relative lg:block flex flex-col items-center  lg:mt-0">
-          <div class="lg:absolute transform translate-y-8 lg:translate-y-0 -top-2 -left-24 w-[12rem] -rotate-12">
+        <div class="flex flex-col items-center lg:py-20 lg:relative lg:block lg:mt-0">
+          <div class="transform translate-y-8 -top-2 -left-24 w-[12rem] -rotate-12 lg:absolute g:translate-y-0">
             <Illu
                 :illu="'/vinny.jpeg'"
             />
@@ -69,7 +68,7 @@ const route = useRoute()
             <Button
                 :color="'#93ECEE'"
                 :content="'Commencer'"
-                :iconStatus ="false"
+                :link="'/test'"
             />
           </Card>
         </div>

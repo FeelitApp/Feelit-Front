@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-light-pink min-h-screen lg:py-10 ">
+  <div class="min-h-screen bg-light-pink lg:py-10 ">
     <NuxtPage />
   </div>
 </template>
