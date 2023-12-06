@@ -16,7 +16,7 @@ export default {
         'purple': '#CEBBFE',
         'blue': '#93ECEE'
       }
-    },
+    }
 
   },
   plugins: [],

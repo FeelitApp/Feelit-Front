@@ -7,7 +7,7 @@
     <input
       :type="props.type"
       :name="props.name"
-      class="font-grotesk px-3 py-1 outline outline-1 outline-offset-1 outline-black rounded-2xl w-full"
+      class="font-grotesk px-3 py-1 outline outline-1 outline-offset-1 outline-black rounded-2xl w-full selection:bg-light-pink"
       />
   </div>
 
