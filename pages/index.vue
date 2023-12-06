@@ -1,5 +1,6 @@
 <script setup>
 const route = useRoute()
+definePageMeta({colorMode: 'light'})
 </script>
 
 <template>

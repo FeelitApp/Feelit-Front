@@ -1,5 +1,5 @@
 <template>
-  <div class="flex h-screen ">
+  <div class="flex h-screen">
     <div class="w-96 bg-white rounded-xl border-2 border-black shadow-[4px_4px_0_rgba(0,0,0,1)] m-auto overflow-hidden">
 
       <div class="flex flex-row h-12 justify-between">
@@ -78,7 +78,7 @@
 
 
 
-<script setup lang="ts">
+<script setup>
 
   const activeTab = ref("Connexion")
 
