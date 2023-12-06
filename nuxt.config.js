@@ -2,9 +2,9 @@
 export default defineNuxtConfig({
     devtools: { enabled: true },
     modules: [
-        "@nuxtjs/tailwindcss",
+        '@nuxt/ui'
     ],
     css: [
-        '~/assets/css/fonts.css',
-    ],
+        '~/assets/css/fonts.css'
+    ]
 })
