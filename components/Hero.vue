@@ -1,6 +1,7 @@
 <template>
   <div class="bg-[url('/bg_hero.svg')] bg-no-repeat bg-cover border-b-2 border-black">
-    <div class="flex flex-col items-center justify-center px-10 py-6 lg:flex-row gap-4 lg:gap-8 lg:px-20 lg:py-10">
+    <NuxtLink to="/">
+    <div class="flex flex-col items-center justify-center px-8 py-6 lg:flex-row gap-4 lg:gap-8 lg:px-20 lg:py-10">
 
       <img src="/logo_feelit_green.svg" class="object-contain w-52"/>
 
@@ -14,6 +15,7 @@
       </div>
 
     </div>
+    </NuxtLink>
   </div>
 </template>
 
