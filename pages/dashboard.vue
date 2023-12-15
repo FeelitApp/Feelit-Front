@@ -67,7 +67,7 @@
           <div class="bg-lime px-4 py-2 border-b-2 border-black w-full mt-0">
             <p class="font-grotesk">Paramètres du compte</p>
           </div>
-          <div class="flex flex-col p-6 gap-6 sm:p-10 sm:gap-10 justify-center">
+          <div class="flex flex-col px-6 py-6 gap-6 sm:px-10 sm:py-8 sm:gap-10 justify-center">
             <div class="flex flex-col gap-6 sm:grid sm:grid-cols-2 sm:gap-8">
               <Input
                   :type="'username'"
