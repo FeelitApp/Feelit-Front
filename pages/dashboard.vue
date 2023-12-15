@@ -3,15 +3,15 @@
     <Container>
       <Hero/>
 
-      <div class="container flex flex-col px-10 pt-10 pb-12 mx-auto gap-12 lg:pt-20 lg:pb-0 lg:px-40">
+      <div class="container flex flex-col px-6 pt-6 pb-10 sm:px-10 sm:pt-10 sm:pb-12 mx-auto gap-12 lg:pt-20 lg:pb-0 lg:px-40">
 
-        <div class="flex flex-row justify-between">
-          <div class="flex flex-col gap-4 w-[50%]">
-            <h1 class="font-grotesk font-medium text-3xl">Bonjour Théodule44 👋</h1>
+        <div class="flex flex-col gap-6 sm:gap-10 sm:flex sm:flex-row sm:justify-between">
+          <div class="flex flex-col gap-4 sm:w-[50%]">
+            <h1 class="font-grotesk font-medium text-2xl sm:text-3xl">Bonjour Théodule44 👋</h1>
             <p class="font-grotesk whitespace-pre-line">
               Bienvenue sur votre tableau de bord.<br>Vous trouverez sur cette page toutes les informations relatives à votre compte, ainsi que l’historique de vos émotions.            </p>
           </div>
-          <div class="flex flex-row gap-10 w-[45%]">
+          <div class="flex sm:flex-row gap-6 sm:gap-10 sm:w-[45%]">
             <div class="w-1/2 h-auto items-center gap-0 rounded-xl border-2 border-black overflow-hidden shadow-[4px_4px_0_rgba(0,0,0,1)] flex flex-col px-6 py-6">
               <span class="font-grotesk text-5xl text-purple">{{currDay}}</span>
               <span class="font-grotesk text-xl">{{currMonth}}</span>
@@ -30,8 +30,8 @@
           </div>
         </div>
 
-        <div class="flex flex-row justify-between">
-          <div class="flex flex-col items-center gap-8 w-[50%]">
+        <div class="flex flex-col gap-10 sm:flex sm:flex-row sm:justify-between">
+          <div class="flex flex-col items-center gap-8 sm:w-[50%]">
             <div class="rounded-xl border-2 border-black overflow-hidden shadow-[4px_4px_0_rgba(0,0,0,1)] flex flex-col h-80 w-full">
               <div class="bg-pink px-4 py-2 border-b-2 border-black w-full mt-0">
                 <p class="font-grotesk">Calendrier</p>
@@ -44,7 +44,7 @@
                 :content="'Télécharger toutes les données'"
             />
           </div>
-          <div class="flex flex-col items-center gap-8 w-[45%]">
+          <div class="flex flex-col items-center gap-8 sm:w-[45%]">
             <div class="rounded-xl border-2 border-black overflow-hidden shadow-[4px_4px_0_rgba(0,0,0,1)] flex flex-col h-80 w-full">
               <div class="bg-purple px-4 py-2 border-b-2 border-black w-full mt-0">
                 <p class="font-grotesk">Données enregistrées</p>
@@ -67,8 +67,8 @@
           <div class="bg-lime px-4 py-2 border-b-2 border-black w-full mt-0">
             <p class="font-grotesk">Paramètres du compte</p>
           </div>
-          <div class="flex flex-col p-10 gap-10 justify-center">
-            <div class="grid grid-cols-2 gap-8">
+          <div class="flex flex-col p-6 gap-6 sm:p-10 sm:gap-10 justify-center">
+            <div class="flex flex-col gap-6 sm:grid sm:grid-cols-2 sm:gap-8">
               <Input
                   :type="'username'"
                   :name="'username'"
@@ -92,6 +92,7 @@
             </div>
             <div class="mx-auto">
               <Button
+                  class="text-md"
                   :color="'#FFFFFF'"
                   :content="'Enregistrer les modifications'"
               />
@@ -99,7 +100,7 @@
           </div>
         </div>
 
-        <div class="flex flex-row justify-center gap-12">
+        <div class="flex flex-col sm:flex-row items-center sm:justify-center gap-6 sm:gap-12">
           <Button
               :color="'#FF7B7B'"
               :content="'Supprimer mon compte'"

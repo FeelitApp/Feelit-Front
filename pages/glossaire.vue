@@ -3,7 +3,7 @@
     <Container>
       <Hero/>
       <div class="container flex flex-col px-10 pt-10 pb-12 mx-auto gap-8 lg:pt-20 lg:pb-0 lg:px-40">
-        <h1 class="font-grotesk font-medium text-3xl">Glossaire 📚</h1>
+        <h1 class="font-grotesk font-medium text-2xl sm:text-3xl">Glossaire 📚</h1>
 
         <div class="rounded-xl border-0 sm:border-2 sm:border-black overflow-hidden shadow-none sm:shadow-[4px_4px_0_rgba(0,0,0,1)] flex flex-col sm:px-12 sm:py-12 lg:mb-12">
           <h2 class="font-grotesk font-medium font-xl">
