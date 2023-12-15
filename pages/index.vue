@@ -53,7 +53,7 @@ definePageMeta({colorMode: 'light'})
           </div>
         </div>
 
-        <div class="flex flex-col items-center lg:py-20 lg:relative lg:block lg:mt-0">
+        <div class="flex flex-col items-center lg:pt-20 lg:pb-2 lg:relative lg:block lg:mt-0">
           <div class="transform translate-y-8 -top-12 -left-20 w-[12rem] -rotate-12 lg:absolute g:translate-y-0">
             <Illu
                 :illu="'/vinny.jpeg'"
@@ -66,6 +66,7 @@ definePageMeta({colorMode: 'light'})
           >
             <NuxtLink to="/quiz">
               <Button
+                  :bold="true"
                   :color="'#93ECEE'"
                   :content="'Commencer'"
               />

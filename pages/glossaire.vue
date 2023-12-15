@@ -55,7 +55,7 @@
           </p>
         </div>
 
-        <div class="rounded-xl border-0 sm:border-2 sm:border-black overflow-hidden shadow-none sm:shadow-[4px_4px_0_rgba(0,0,0,1)] flex flex-col sm:px-12 sm:py-12 lg:mb-12">
+        <div class="rounded-xl border-0 sm:border-2 sm:border-black overflow-hidden shadow-none sm:shadow-[4px_4px_0_rgba(0,0,0,1)] flex flex-col sm:px-12 sm:py-12">
           <h2 class="font-grotesk font-medium font-xl">
             L’intelligence émotionnelle :
           </h2>
@@ -96,7 +96,9 @@
               Reconnaître les émotions des autres
             </div>
             <div>
-              <div class="flex"><h2 class="mx-auto sm:mx-0"><span class="bg-pink w-fit font-bold whitespace-break-spaces">Compétence </span><span class="bg-pink w-fit font-bold">sociale</span></h2></div>
+              <div class="flex"><h2 class="mx-auto sm:mx-0">
+                <span class="bg-pink w-fit font-bold whitespace-break-spaces">Compétence </span>
+                <span class="bg-pink w-fit font-bold">sociale</span></h2></div>
               Gérer les émotions des autres
             </div>
           </div>

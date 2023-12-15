@@ -1,6 +1,6 @@
 <template>
 
-    <div class="flex flex-wrap justify-center sm:justify-between px-8 py-8 lg:px-40 lg:pt-0 lg:pb-16 bg-light-pink gap-5 wrap lg:bg-white lg:flex-row">
+    <div class="flex flex-wrap justify-center sm:justify-between px-8 py-8 lg:px-40 lg:pt-20 lg:pb-16 bg-light-pink gap-5 wrap lg:bg-white lg:flex-row">
         <NuxtLink to="/glossaire">
           <Button
               :color="'#FFF'"
