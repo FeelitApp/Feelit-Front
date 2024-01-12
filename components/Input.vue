@@ -1,6 +1,6 @@
 <template>
   <div>
-    <label className="flex font-grotesk text-sm mb-1">
+    <label class="flex font-grotesk text-sm mb-1">
       {{ label }}
     </label>
     <input

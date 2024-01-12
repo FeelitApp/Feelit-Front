@@ -12,13 +12,10 @@ definePageMeta({colorMode: 'light'})
 
         <div class="flex flex-col gap-4 font-grotesk text-md lg:text-lg lg:leading-normal">
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur nibh lacus, vehicula vitae aliquet ut,
-            gravida sed tortor. Aliquam convallis porta tincidunt. In hendrerit ligula a lorem rutrum hendrerit. Morbi
-            eleifend lacinia enim.
+            Inspiré de la Roue des Émotions, développée par le psychologue américain  Robert Plutchik en 1980, <strong>feelit</strong> a pour objectif de vous accompagner dans l’identification de vos émotions, afin que vous puissiez les nommer et vous les approprier.
           </p>
           <p>
-            Nunc sollicitudin facilisis tellus. In eu odio at massa semper dignissim. Nulla facilisi. Aliquam et mollis
-            mauris. Maecenas laoreet lacinia lacus pharetra bibendum.
+            Identifier nos émotions nous permet de les accueillir plus sereinement, de dépasser les blocages et d’en faire nos alliées pour avancer.
           </p>
         </div>
 
@@ -27,15 +24,15 @@ definePageMeta({colorMode: 'light'})
             <Card
                 :color="'#FACDEB'"
                 :title="'Sensations'"
-                :content="'Lorem ipsum dolor sit amet, consec tetur adipiscing elit, consec tetur adipiscing elit.'"
+                :content="'Une sensation est quelque chose que l’on ressent physiquement.'"
                 :button="false"
             />
           </div>
           <div class="lg:absolute lg:bottom-0 lg:left-60">
             <Card
                 :color="'#CEFF1B'"
-                :title="'Emotions'"
-                :content="'Lorem ipsum dolor sit amet, consec tetur adipiscing elit, consec tetur adipiscing elit.'"
+                :title="'Émotions'"
+                :content="'Une émotion est une réponse brève à un stimulus extérieur. Elle ne dure pas plus de 2 minutes.'"
                 :button="false"
             />
           </div>
@@ -43,7 +40,7 @@ definePageMeta({colorMode: 'light'})
             <Card
                 :color="'#CEBBFE'"
                 :title="'Besoins'"
-                :content="'Lorem ipsum dolor sit amet, consec tetur adipiscing elit, consec tetur adipiscing elit.'"
+                :content="'Les besoins désignent les choses à mettre en place en réponse à l’émotion ressentie.'"
                 :button="false"
             />
           </div>
@@ -56,7 +53,7 @@ definePageMeta({colorMode: 'light'})
           </div>
         </div>
 
-        <div class="flex flex-col items-center lg:py-20 lg:relative lg:block lg:mt-0">
+        <div class="flex flex-col items-center lg:pt-20 lg:pb-2 lg:relative lg:block lg:mt-0">
           <div class="transform translate-y-8 -top-12 -left-20 w-[12rem] -rotate-12 lg:absolute g:translate-y-0">
             <Illu
                 :illu="'/vinny.jpeg'"
@@ -64,14 +61,17 @@ definePageMeta({colorMode: 'light'})
           </div>
           <Card
               :color="'#FFFFF'"
-              :content="'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur nibh lacus, vehicula vitae aliquet ut, gravida sed tortor.'"
+              :content="'En répondant aux différentes questions posées, identifiez vos émotions et accédez à des exemples de besoins associés.'"
               :button="true"
           >
-            <Button
-                :color="'#93ECEE'"
-                :content="'Commencer'"
-                :link="'/test'"
-            />
+            <NuxtLink to="/quiz">
+              <Button
+                  :bold="true"
+                  :color="'#93ECEE'"
+                  :content="'Commencer'"
+              />
+            </NuxtLink>
+
           </Card>
         </div>
       </div>
