@@ -44,19 +44,12 @@ definePageMeta({colorMode: 'light'})
                 :button="false"
             />
           </div>
-          <div class="bottom-0 right-0 mx-auto lg:absolute">
-            <Button
-                :color="'#FFFFF'"
-                :content="'En savoir plus'"
-                :icon="'/arrow.svg'"
-            />
-          </div>
         </div>
 
         <div class="flex flex-col items-center lg:pt-20 lg:pb-2 lg:relative lg:block lg:mt-0">
           <div class="transform translate-y-8 -top-12 -left-20 w-[12rem] -rotate-12 lg:absolute g:translate-y-0">
             <Illu
-                :illu="'/vinny.jpeg'"
+                :illu="'/idris.jpg'"
             />
           </div>
           <Card

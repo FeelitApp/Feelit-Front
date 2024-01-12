@@ -20,6 +20,7 @@
             type="email"
             name="emailLogin"
             label="E-mail"
+            required="true"
             class="w-full"
             v-model="emailLogin"
         />
@@ -28,15 +29,19 @@
             name="passwordLogin"
             label="Mot de passe"
             class="w-full"
+            required="true"
             v-model="passwordLogin"
         />
+          <span v-if="errors.emailLogin">{{ errors.emailLogin }}</span>
+          <span v-if="errors.passwordLogin">{{ errors.passwordLogin }}</span>
+          <span v-if="errors.code">Votre identifiant est incorrect.</span>
         <div class="flex gap-x-6">
           <Button
               color="#93ECEE"
               content="Se connecter"
+              type="submit"
               link="#"
               class="mt-4"
-              @click.prevent="submitLogin"
           />
         </div>
         </form>
@@ -81,9 +86,9 @@
           </span>
           <Button
               color="#93ECEE"
+              type="submit"
               content="S'inscrire"
               class="mt-4"
-              @click.prevent="submitRegister"
           />
         </form>
 
@@ -105,25 +110,13 @@ const confirmPassword = ref('');
 const errors = ref({
   email: '',
   blank: '',
-  password: ''
+  password: '',
+  code: '',
 });
 
 const validateForm = () => {
-  errors.value.blank = !email.value || !username.value || !password.value || !confirmPassword.value
-      ? "Veuillez remplir tous les champs." : '';
-
-  errors.value.email = email.value && !/^\S+@\S+\.\S+$/.test(email.value)
-      ? "L'adresse mail n'est pas valide." : '';
-
   errors.value.password = password.value !== confirmPassword.value
       ? "Les deux mots de passe ne sont pas identiques." : '';
-
-  return !Object.values(errors.value).some(error => error !== '');
-};
-
-const validateFormLogin = () => {
-  errors.value.blank = !emailLogin.value || !passwordLogin.value
-      ? "Veuillez remplir tous les champs." : '';
 
   return !Object.values(errors.value).some(error => error !== '');
 };
@@ -152,8 +145,6 @@ const submitRegister = async () => {
 }
 
 const submitLogin = async () => {
-  if (!validateFormLogin()) return;
-
   const formData = new FormData();
   formData.append('email', emailLogin.value);
   formData.append('password', passwordLogin.value);
@@ -168,6 +159,8 @@ const submitLogin = async () => {
     if (error.data.errors) {
       errors.value.emailLogin = error.data.errors.emailLogin || '';
       errors.value.passwordLogin = error.data.errors.passwordLogin || '';
+    } else {
+      errors.value.code = error.data.code || '';
     }
   }
 };

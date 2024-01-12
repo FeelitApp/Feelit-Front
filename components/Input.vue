@@ -6,6 +6,7 @@
     <input
         :type="type"
         :name="name"
+        :required="props.required"
         class="font-grotesk px-3 py-1 outline outline-1 outline-offset-1 outline-black rounded-2xl w-full selection:bg-light-pink"
         :value="modelValue"
         @input="$emit('update:modelValue', $event.target.value)"
@@ -19,6 +20,7 @@ import {defineProps, defineEmits} from 'vue'
 const props = defineProps({
   type: String,
   name: String,
+  required: Boolean,
   label: String,
   modelValue: String
 });

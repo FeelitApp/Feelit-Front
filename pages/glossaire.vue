@@ -45,7 +45,7 @@
             Une <span class="bg-blue">sensation</span> est quelque chose que l’on ressent physiquement. Cela peut-être la respiration saccadée, le coeur qui bat plus vite ou plus lentement, la gorge serrée, etc.
           </p>
           <p class="font-grotesk mb-3">
-            Les <span class="bg-lime">émotions</span> sont quant à elles des réponses brèves à des stimuli extérieurs. Ce sont des réponse physiologiques, expressions faciales, qui apparaissent dans l’instant et ne durent que quelques minutes. On peut être heureux, en colère, avoir peur, etc.
+            Les <span class="bg-lime">émotions</span> sont quant à elles des réponses brèves à des stimuli extérieurs. Ce sont des réponses physiologiques, expressions faciales, qui apparaissent dans l’instant et ne durent que quelques minutes. On peut être heureux, en colère, avoir peur, etc.
           </p>
           <p class="font-grotesk mb-3">
             Les <span class="bg-purple">sentiments</span> interviennent dans un temps plus long, après le stimulus. Ils sont une réaction, une verbalisation qui fait suite à un événement, sur une durée plus ou moins longue. On peut par exemple nourrir de la rancoeur vis-à-vis que quelque chose a posteriori, et s’en vouloir de n’avoir rien dit.
@@ -67,9 +67,9 @@
           </p>
           <ul class="ml-8 font-grotesk mb-3 list-disc">
             <li>mieux interagir avec les autres,</li>
-            <li>d’éviter les conflits,</li>
-            <li>de créer des liens de meilleure qualité,</li>
-            <li>de développer des relations plus facilement via l’écoute et la compréhension.</li>
+            <li>éviter les conflits,</li>
+            <li>créer des liens de meilleure qualité,</li>
+            <li>développer des relations plus facilement via l’écoute et la compréhension.</li>
           </ul>
           <p class="font-grotesk mb-8">
             L’intelligence émotionnelle est basée sur cinq composantes :
