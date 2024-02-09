@@ -1,12 +1,17 @@
 <template>
   <div
       class="rounded-xl border-0 sm:border-2 sm:border-black overflow-hidden shadow-none sm:shadow-[4px_4px_0_rgba(0,0,0,1)] flex flex-col sm:px-12 sm:py-12 lg:mb-12">
-    <h2 class="font-grotesk font-semibold text-3xl mx-auto mb-8">
+    <h2 class="font-grotesk font-semibold text-3xl mx-auto mb-8 text-center">
       Comment vous sentez-vous ?
     </h2>
 
     <div v-for="sensation in data">
-      <ul :id="sensation.id" class="bg-light-pink rounded-xl border-2 border-black px-6 py-4 w-full font-grotesk mb-6">
+      <ul
+          :id="sensation.id"
+          class="bg-light-pink rounded-xl border-2 border-black px-6 py-4 w-full font-grotesk mb-6 cursor-pointer"
+          :class="{'bg-lime':sensation.id === selectedSensation}"
+          @click="select(sensation.id)"
+      >
         <li class="text-center">{{ sensation.content }}</li>
       </ul>
     </div>
@@ -16,6 +21,11 @@
 
 <script setup>
 const data = ref('')
+const selectedSensation = ref(0)
+
+function select(id) {
+  selectedSensation.value = id
+}
 
 const fetchSensation = async () => {
   try {
