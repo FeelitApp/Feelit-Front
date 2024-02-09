@@ -5,14 +5,30 @@
     </h2>
 
     <div v-for="feeling in dataFeelings" :key="feeling.id">
-      <div class="w-full px-6 py-4 mb-6 font-grotesk">
-        <div class="cursor-pointer" @click="toggle(feeling.id)">
-          {{ feeling.emoji + " " + feeling.category }}
+      <div class="w-full px-6 py-4 mb-0 font-grotesk">
+        <div class="flex justify-between cursor-pointer" @click="toggle(feeling.id)">
+          <div class="text-lg font-bold mb-4 whitespace-break-spaces" >
+            {{ feeling.emoji + "  " + feeling.category }}
+          </div>
+          <ChevronUpIcon
+              class="w-4"
+              v-if="isOpen(feeling.id)"
+          />
+          <ChevronDownIcon
+              class="w-4"
+              v-else
+          />
         </div>
+
 
         <div v-if="isOpen(feeling.id)">
           <div v-for="emotion in dataEmotions" :key="emotion.id">
-            <div v-if="feeling.id === emotion.feeling.id">
+            <div
+                v-if="feeling.id === emotion.feeling.id"
+                class="bg-light-pink rounded-xl border-2 border-black px-6 py-2 w-full font-grotesk text-center mb-4 cursor-pointer"
+                :class="{'bg-lime':emotion.id === selectedEmotion}"
+                @click="select(emotion.id)"
+            >
               {{ emotion.content }}
             </div>
           </div>
@@ -24,8 +40,10 @@
 </template>
 
 <script setup>
-const dataFeelings = ref([]); // Remplacez avec vos données réelles
-const dataEmotions = ref([]); // Remplacez avec vos données réelles
+import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/vue/24/outline';
+
+const dataFeelings = ref([]);
+const dataEmotions = ref([]);
 
 const openItems = ref({});
 
@@ -54,6 +72,12 @@ const fetchEmotion = async () => {
   } catch (e) {
     console.log({e})
   }
+}
+
+const selectedEmotion = ref(0)
+
+function select(id) {
+  selectedEmotion.value = id
 }
 
 fetchFeeling()
