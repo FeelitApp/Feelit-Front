@@ -1,7 +1,7 @@
 <template>
   <div class="rounded-xl border-0 sm:border-2 sm:border-black overflow-hidden shadow-none sm:shadow-[4px_4px_0_rgba(0,0,0,1)] flex flex-col sm:px-12 sm:py-12 lg:mb-12">
     <h2 class="mx-auto mb-8 text-3xl font-semibold font-grotesk text-center">
-      Quelle émotion correspond le mieux à votre état ?
+      Quelle émotion correspond<br/>le mieux à votre état ?
     </h2>
 
     <div v-for="feeling in dataFeelings" :key="feeling.id">
@@ -10,14 +10,8 @@
           <div class="text-lg font-bold mb-4 whitespace-break-spaces" >
             {{ feeling.emoji + "  " + feeling.category }}
           </div>
-          <ChevronUpIcon
-              class="w-4"
-              v-if="isOpen(feeling.id)"
-          />
-          <ChevronDownIcon
-              class="w-4"
-              v-else
-          />
+          <ChevronUpIcon class="w-4" v-if="isOpen(feeling.id)"/>
+          <ChevronDownIcon class="w-4" v-else/>
         </div>
 
 
@@ -41,11 +35,15 @@
 
 <script setup>
 import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/vue/24/outline';
+import {useQuizDataStore} from "~/stores/quizData.js";
 
 const dataFeelings = ref([]);
 const dataEmotions = ref([]);
 
 const openItems = ref({});
+
+const quizData = useQuizDataStore()
+console.log(quizData.sensationId)
 
 const toggle = (id) => {
   openItems.value[id] = !openItems.value[id];

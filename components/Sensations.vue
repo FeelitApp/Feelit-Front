@@ -8,7 +8,7 @@
     <div v-for="sensation in data">
       <ul
           :id="sensation.id"
-          class="bg-light-pink rounded-xl border-2 border-black px-6 py-4 w-full font-grotesk mb-6 cursor-pointer"
+          class="bg-light-pink rounded-xl border-2 border-black px-6 py-4 w-full font-grotesk mb-4 cursor-pointer"
           :class="{'bg-lime':sensation.id === selectedSensation}"
           @click="select(sensation.id)"
       >
@@ -20,11 +20,15 @@
 </template>
 
 <script setup>
+import {useQuizDataStore} from "~/stores/quizData.js";
+
 const data = ref('')
 const selectedSensation = ref(0)
+const quizData = useQuizDataStore()
 
 function select(id) {
   selectedSensation.value = id
+  quizData.sensationId = id
 }
 
 const fetchSensation = async () => {
