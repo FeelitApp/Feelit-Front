@@ -6,7 +6,7 @@
     <div v-for="need in data"
          class="h-fit rounded-xl border-2 border-black overflow-hidden shadow-[4px_4px_0_rgba(0,0,0,1)] flex-col mb-10">
       <img :src="need.picture"
-           class="border-2 border-b-black"/>
+           class="border-b-2 border-b-black"/>
       <p class="text-center m-6 font-grotesk">{{ need.content }}</p>
     </div>
   </div>
