@@ -15,7 +15,7 @@
 
     <div class="px-10 pt-10 pb-4">
 
-        <form @submit.prevent="submitLogin" v-if="activeTab === 'Connexion'" class="flex flex-col items-center gap-y-6">
+      <form @submit.prevent="submitLogin" v-if="activeTab === 'Connexion'" class="flex flex-col items-center gap-y-6">
         <Input
             type="email"
             name="emailLogin"
@@ -24,17 +24,19 @@
             class="w-full"
             v-model="emailLogin"
         />
-        <Input
-            type="password"
-            name="passwordLogin"
-            label="Mot de passe"
-            class="w-full"
-            required="true"
-            v-model="passwordLogin"
-        />
+        <div class="relative w-full">
+          <Input
+              type="password"
+              name="passwordLogin"
+              label="Mot de passe"
+              class="w-full"
+              required="true"
+              v-model="passwordLogin"
+          />
           <span v-if="errors.emailLogin">{{ errors.emailLogin }}</span>
           <span v-if="errors.passwordLogin">{{ errors.passwordLogin }}</span>
           <span v-if="errors.code">Votre identifiant est incorrect.</span>
+        </div>
         <div class="flex gap-x-6">
           <Button
               color="#93ECEE"
@@ -44,15 +46,16 @@
               class="mt-4"
           />
         </div>
-        </form>
-        <form @submit.prevent="submitRegister" v-else class="flex flex-col items-center gap-y-6">
-          <Input
-              type="username"
-              name="username"
-              label="Nom d'utilisateur"
-              class="w-full"
-              v-model="username"
-          />
+      </form>
+      <form @submit.prevent="submitRegister" v-else class="flex flex-col items-center gap-y-6">
+        <Input
+            type="username"
+            name="username"
+            label="Nom d'utilisateur"
+            class="w-full"
+            v-model="username"
+        />
+        <div class="relative w-full">
           <Input
               type="email"
               name="email"
@@ -62,15 +65,17 @@
               required
           />
           <span v-if="errors.email">
-            {{ errors.email }}
-          </span>
-          <Input
-              type="password"
-              name="password"
-              label="Mot de passe"
-              class="w-full"
-              v-model="password"
-          />
+              {{ errors.email.at(0) }}
+            </span>
+        </div>
+        <Input
+            type="password"
+            name="password"
+            label="Mot de passe"
+            class="w-full"
+            v-model="password"
+        />
+        <div class="relative w-full">
           <Input
               type="password"
               name="confirmPassword"
@@ -79,18 +84,19 @@
               v-model="confirmPassword"
           />
           <span v-if="errors.password">
-            {{ errors.password }}
-          </span>
+              {{ errors.password }}
+            </span>
           <span v-if="errors.blank">
-            {{ errors.blank }}
-          </span>
-          <Button
-              color="#93ECEE"
-              type="submit"
-              content="S'inscrire"
-              class="mt-4"
-          />
-        </form>
+              {{ errors.blank }}
+            </span>
+        </div>
+        <Button
+            color="#93ECEE"
+            type="submit"
+            content="S'inscrire"
+            class="mt-4"
+        />
+      </form>
 
     </div>
   </div>
@@ -106,6 +112,8 @@ const username = ref('');
 const password = ref('');
 const passwordLogin = ref('');
 const confirmPassword = ref('');
+const router = useRouter()
+
 
 const errors = ref({
   email: '',
@@ -130,11 +138,12 @@ const submitRegister = async () => {
   formData.append('password', password.value);
 
   try {
-    const response = await $fetch('http://127.0.0.1:8000/register', {
+    await $fetch('http://127.0.0.1:8000/register', {
       method: 'POST',
       body: formData
     });
-    console.log(response);
+
+    activeTab.value = 'Connexion';
   } catch (error) {
     if (error.data.errors) {
       errors.value.email = error.data.errors.email || '';
@@ -154,6 +163,10 @@ const submitLogin = async () => {
       method: 'POST',
       body: formData
     });
+
+    if (response.data !== undefined) {
+      router.push('/dashboard');
+    }
     console.log(response);
   } catch (error) {
     if (error.data.errors) {
