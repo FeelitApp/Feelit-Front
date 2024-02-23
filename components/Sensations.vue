@@ -42,4 +42,10 @@ const fetchSensation = async () => {
 }
 
 fetchSensation()
+
+onMounted(() => {
+  if (quizData.sensationId) {
+    selectedSensation.value = quizData.sensationId
+  }
+})
 </script>
