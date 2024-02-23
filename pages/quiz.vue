@@ -3,29 +3,31 @@
     <Container>
       <Hero/>
       <div class="container flex flex-col px-10 pt-10 mx-auto lg:pt-20 lg:pb-0 lg:px-40">
-          <Sensations v-if="currentStep === 1"/>
-          <Emotions v-if="currentStep === 2"/>
-          <Needs v-if="currentStep === 3"/>
-          <div class="flex justify-between">
-            <NuxtLink 
+        <Sensations v-if="currentStep === 1"/>
+        <Emotions v-if="currentStep === 2"/>
+        <Needs v-if="currentStep === 3"/>
+        <div class="flex justify-between">
+          <NuxtLink
               class="pb-12 mx-auto my-4"
-              :class="{'hidden': currentStep === 1}" 
+              :class="{'hidden': currentStep === 1}"
               @click="previousStep">
-              <Button
-                  :color="'#93ECEE'"
-                  :content="'Retour'"
-              />
-            </NuxtLink>
-            <NuxtLink 
-              class="pb-12 mx-auto my-4" 
+            <Button
+                :color="'#93ECEE'"
+                :content="'Retour'"
+            />
+          </NuxtLink>
+          <NuxtLink
+              class="pb-12 mx-auto my-4"
               :class="{'hidden': currentStep === 3}"
               @click="nextStep">
-              <Button
-                  :color="'#93ECEE'"
-                  :content="'Suivant'"
-              />
-            </NuxtLink>
-          </div>
+            <Button
+                :color="'#93ECEE'"
+                :content="'Suivant'"
+            />
+          </NuxtLink>
+          <ResultCard
+              :class="{'hidden': currentStep !== 3}"/>
+        </div>
       </div>
 
       <Footer/>
@@ -35,8 +37,10 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
-definePageMeta({ colorMode: 'light' });
+import {ref} from 'vue';
+import ResultCard from "~/components/ResultCard.vue";
+
+definePageMeta({colorMode: 'light'});
 
 const currentStep = ref(1);
 

@@ -7,13 +7,13 @@
     <div class="flex flex-col">
       <div 
         v-for="feeling in dataFeelings" :key="feeling.id"
-        :class="{'order-first': feeling.id === quizData.feelingId}"
+        :class="{'order-first': feeling.id === quizData.sensationData.feeling.id}"
       >
         <div class="w-full px-6 py-4 mb-0 font-grotesk">
           <div class="flex justify-between cursor-pointer" @click="toggle(feeling.id)">
             <div 
               class="mb-4 text-lg whitespace-break-spaces"
-              :class="{'font-bold': feeling.id === quizData.feelingId}"
+              :class="{'font-bold': feeling.id === quizData.sensationData.feeling.id}"
             >
               {{ feeling.emoji + "  " + feeling.category }}
             </div>
@@ -28,7 +28,7 @@
                   v-if="feeling.id === emotion.feeling.id"
                   class="w-full px-6 py-2 mb-4 text-center border-2 border-black cursor-pointer bg-light-pink rounded-xl font-grotesk"
                   :class="{'bg-lime':emotion.id === selectedEmotion}"
-                  @click="select(emotion.id)"
+                  @click="select(emotion, feeling)"
               >
                 {{ emotion.content }}
               </div>
@@ -51,8 +51,7 @@ const dataEmotions = ref([]);
 const openItems = ref({});
 
 const quizData = useQuizDataStore()
-console.log(quizData.sensationId)
-console.log('feelindId', quizData.feelingId)
+console.log(quizData.sensationData)
 
 const toggle = (id) => {
   openItems.value[id] = !openItems.value[id];
@@ -80,8 +79,10 @@ const fetchEmotion = async () => {
 
 const selectedEmotion = ref(0)
 
-function select(id) {
-  selectedEmotion.value = id
+function select(dataEmotion, dataFeeling) {
+  selectedEmotion.value = dataEmotion.id
+  quizData.emotionData = dataEmotion
+  quizData.feelingData = dataFeeling
 }
 
 fetchFeeling()

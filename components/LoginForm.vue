@@ -167,7 +167,6 @@ const submitLogin = async () => {
     if (response.data !== undefined) {
       router.push('/dashboard');
     }
-    console.log(response);
   } catch (error) {
     if (error.data.errors) {
       errors.value.emailLogin = error.data.errors.emailLogin || '';

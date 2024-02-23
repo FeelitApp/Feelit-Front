@@ -18,7 +18,6 @@ const data = ref('')
 const fetchNeed = async () => {
   try {
     data.value = await $fetch('http://127.0.0.1:8000/api/need')
-    console.log(data.value)
   } catch (e) {
     console.log({e})
   }

@@ -10,7 +10,7 @@
           :id="sensation.id"
           class="w-full px-6 py-4 mb-4 border-2 border-black cursor-pointer bg-light-pink rounded-xl font-grotesk"
           :class="{'bg-lime':sensation.id === selectedSensation}"
-          @click="select(sensation.id, sensation.feeling.id)"
+          @click="select(sensation)"
       >
         <li class="text-center">{{ sensation.content }}</li>
       </ul>
@@ -26,16 +26,14 @@ const data = ref('')
 const selectedSensation = ref(0)
 const quizData = useQuizDataStore()
 
-function select(id, feelingId) {
-  selectedSensation.value = id
-  quizData.feelingId = feelingId
-  quizData.sensationId = id
+function select(data) {
+  selectedSensation.value = data.id
+  quizData.sensationData = data
 }
 
 const fetchSensation = async () => {
   try {
     data.value = await $fetch('http://127.0.0.1:8000/api/sensation')
-    console.log(data.value)
   } catch (e) {
     console.log({e})
   }
