@@ -1,16 +1,16 @@
 <template>
   <div
       class="rounded-xl border-0 sm:border-2 sm:border-black overflow-hidden shadow-none sm:shadow-[4px_4px_0_rgba(0,0,0,1)] flex flex-col sm:px-12 sm:py-12 lg:mb-12">
-    <h2 class="font-grotesk font-semibold text-3xl mx-auto mb-8 text-center">
+    <h2 class="mx-auto mb-8 text-3xl font-semibold text-center font-grotesk">
       Comment vous sentez-vous ?
     </h2>
 
     <div v-for="sensation in data">
       <ul
           :id="sensation.id"
-          class="bg-light-pink rounded-xl border-2 border-black px-6 py-4 w-full font-grotesk mb-4 cursor-pointer"
+          class="w-full px-6 py-4 mb-4 border-2 border-black cursor-pointer bg-light-pink rounded-xl font-grotesk"
           :class="{'bg-lime':sensation.id === selectedSensation}"
-          @click="select(sensation.id)"
+          @click="select(sensation.id, sensation.feeling.id)"
       >
         <li class="text-center">{{ sensation.content }}</li>
       </ul>
@@ -26,8 +26,9 @@ const data = ref('')
 const selectedSensation = ref(0)
 const quizData = useQuizDataStore()
 
-function select(id) {
+function select(id, feelingId) {
   selectedSensation.value = id
+  quizData.feelingId = feelingId
   quizData.sensationId = id
 }
 
