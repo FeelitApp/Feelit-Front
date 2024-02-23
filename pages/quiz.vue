@@ -6,12 +6,26 @@
           <Sensations v-if="currentStep === 1"/>
           <Emotions v-if="currentStep === 2"/>
           <Needs v-if="currentStep === 3"/>
-        <NuxtLink class="mx-auto pb-12 my-4" @click="nextStep">
-          <Button
-              :color="'#93ECEE'"
-              :content="'Suivant'"
-          />
-        </NuxtLink>
+          <div class="flex justify-between">
+            <NuxtLink 
+              class="pb-12 mx-auto my-4"
+              :class="{'hidden': currentStep === 1}" 
+              @click="previousStep">
+              <Button
+                  :color="'#93ECEE'"
+                  :content="'Retour'"
+              />
+            </NuxtLink>
+            <NuxtLink 
+              class="pb-12 mx-auto my-4" 
+              :class="{'hidden': currentStep === 3}"
+              @click="nextStep">
+              <Button
+                  :color="'#93ECEE'"
+                  :content="'Suivant'"
+              />
+            </NuxtLink>
+          </div>
       </div>
 
       <Footer/>
@@ -30,5 +44,9 @@ function nextStep() {
   if (currentStep.value < 3) {
     currentStep.value += 1;
   }
+}
+
+function previousStep() {
+  currentStep.value -= 1;
 }
 </script>
