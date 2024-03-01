@@ -1,7 +1,7 @@
 <template>
-  <div class="mx-auto pb-12 my-4">
+  <div class="pb-12 mx-auto my-4">
       <Button :content="'Continuer'" :color="'#CEBBFE'" @click="isOpen = true">
-        <span class="text-md font-bold font-grotesk">Continuer</span>
+        <span class="font-bold text-md font-grotesk">Continuer</span>
       </Button>
 
       <UModal v-model="isOpen"
@@ -15,7 +15,7 @@
           container: 'flex items-center'
         }"
       >
-        <div class="py-3 px-4">
+        <div class="px-4 py-3">
           <p>Sensation : {{ quizData.sensationData.content }}</p>
           <p>Feeling : {{ quizData.feelingData.category + quizData.feelingData.emoji }} </p>
           <p>Emotion : {{ quizData.emotionData.content }}</p>
@@ -25,9 +25,8 @@
               class="border border-black"
           />
         </div>
-        <button @click="isOpen = false" class="font-grotesk text-sm text-gray-400 pb-6">Fermer</button>
-        <button @click="quizData.note = note" class="font-grotesk text-sm text-gray-400 pb-6">Enregistrer</button>
-        <button @click="console.log(quizData.note)" class="font-grotesk text-sm text-gray-400 pb-6">Console log</button>
+        <button @click="quizData.note = note" class="pb-6 text-sm text-gray-400 font-grotesk">Enregistrer</button>
+        <button @click="isOpen = false" class="pb-6 text-sm text-gray-400 font-grotesk">Continuer sans enregistrer</button>
       </UModal>
   </div>
 </template>

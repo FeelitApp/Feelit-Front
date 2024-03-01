@@ -33,7 +33,7 @@ function select(data) {
 
 const fetchSensation = async () => {
   try {
-    data.value = await $fetch('http://127.0.0.1:8000/api/sensation')
+    data.value = await $fetch('http://feelit-back.cleverapps.io/api/sensation')
   } catch (e) {
     console.log({e})
   }

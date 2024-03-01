@@ -1,13 +1,13 @@
 <template>
-  <h2 class="font-grotesk font-semibold text-3xl mx-auto mb-8">
+  <h2 class="mx-auto mb-8 text-3xl font-semibold font-grotesk">
     Les besoins </h2>
   <div
-      class="columns-2 gap-10">
+      class="gap-10 columns-2">
     <div v-for="need in data"
          class="h-fit rounded-xl border-2 border-black overflow-hidden shadow-[4px_4px_0_rgba(0,0,0,1)] flex-col mb-10">
       <img :src="need.picture"
            class="border-b-2 border-b-black"/>
-      <p class="text-center m-6 font-grotesk">{{ need.content }}</p>
+      <p class="m-6 text-center font-grotesk">{{ need.content }}</p>
     </div>
   </div>
 </template>
@@ -17,7 +17,7 @@ const data = ref('')
 
 const fetchNeed = async () => {
   try {
-    data.value = await $fetch('http://127.0.0.1:8000/api/need')
+    data.value = await $fetch('http://feelit-back.cleverapps.io/api/need')
   } catch (e) {
     console.log({e})
   }

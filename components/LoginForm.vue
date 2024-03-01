@@ -138,7 +138,7 @@ const submitRegister = async () => {
   formData.append('password', password.value);
 
   try {
-    await $fetch('http://127.0.0.1:8000/register', {
+    await $fetch('http://feelit-back.cleverapps.io/register', {
       method: 'POST',
       body: formData
     });
@@ -159,7 +159,7 @@ const submitLogin = async () => {
   formData.append('password', passwordLogin.value);
 
   try {
-    const response = await $fetch('http://127.0.0.1:8000/login', {
+    const response = await $fetch('http://feelit-back.cleverapps.io/login', {
       method: 'POST',
       body: formData
     });
