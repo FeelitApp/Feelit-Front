@@ -63,7 +63,7 @@ const isOpen = (id) => {
 
 const fetchFeeling = async () => {
   try {
-    dataFeelings.value = await $fetch('http://feelit-back.cleverapps.io/api/feeling')
+    dataFeelings.value = await $fetch('https://feelit-back.cleverapps.io/api/feeling')
   } catch (e) {
     console.log({e})
   }
@@ -71,7 +71,7 @@ const fetchFeeling = async () => {
 
 const fetchEmotion = async () => {
   try {
-    dataEmotions.value = await $fetch('http://feelit-back.cleverapps.io/api/emotion')
+    dataEmotions.value = await $fetch('https://feelit-back.cleverapps.io/api/emotion')
   } catch (e) {
     console.log({e})
   }

@@ -17,7 +17,7 @@ const data = ref('')
 
 const fetchNeed = async () => {
   try {
-    data.value = await $fetch('http://feelit-back.cleverapps.io/api/need')
+    data.value = await $fetch('https://feelit-back.cleverapps.io/api/need')
   } catch (e) {
     console.log({e})
   }
