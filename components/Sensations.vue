@@ -22,6 +22,9 @@
 <script setup>
 import {useQuizDataStore} from "~/stores/quizData.js";
 
+const config = useRuntimeConfig()
+const apiBase = config.public.apiBase
+
 const data = ref('')
 const selectedSensation = ref(0)
 const quizData = useQuizDataStore()
@@ -33,7 +36,9 @@ function select(data) {
 
 const fetchSensation = async () => {
   try {
-    data.value = await $fetch('https://feelit-back.cleverapps.io/api/sensation')
+    data.value = await $fetch('api/sensation', {
+      baseURL: apiBase,
+    })
   } catch (e) {
     console.log({e})
   }

@@ -13,11 +13,15 @@
 </template>
 
 <script setup>
+const config = useRuntimeConfig()
+const apiBase = config.public.apiBase
 const data = ref('')
 
 const fetchNeed = async () => {
   try {
-    data.value = await $fetch('https://feelit-back.cleverapps.io/api/need')
+    data.value = await $fetch('api/need', {
+      baseURL: apiBase,
+    })
   } catch (e) {
     console.log({e})
   }

@@ -105,6 +105,9 @@
 
 
 <script setup>
+const config = useRuntimeConfig()
+const apiBase = config.public.apiBase
+
 const activeTab = ref("Connexion");
 const email = ref('');
 const emailLogin = ref('');
@@ -138,8 +141,9 @@ const submitRegister = async () => {
   formData.append('password', password.value);
 
   try {
-    await $fetch('https://feelit-back.cleverapps.io/register', {
+    await $fetch('register', {
       method: 'POST',
+      baseURL: apiBase,
       body: formData
     });
 
@@ -159,8 +163,9 @@ const submitLogin = async () => {
   formData.append('password', passwordLogin.value);
 
   try {
-    const response = await $fetch('https://feelit-back.cleverapps.io/login', {
+    const response = await $fetch('login', {
       method: 'POST',
+      baseURL: apiBase,
       body: formData
     });
 

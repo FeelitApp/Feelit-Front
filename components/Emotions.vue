@@ -45,6 +45,9 @@
 import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/vue/24/outline';
 import { useQuizDataStore } from "~/stores/quizData.js";
 
+const config = useRuntimeConfig()
+const apiBase = config.public.apiBase
+
 const dataFeelings = ref([]);
 const dataEmotions = ref([]);
 
@@ -63,7 +66,9 @@ const isOpen = (id) => {
 
 const fetchFeeling = async () => {
   try {
-    dataFeelings.value = await $fetch('https://feelit-back.cleverapps.io/api/feeling')
+    dataFeelings.value = await $fetch('api/feeling', {
+      baseURL: apiBase
+    })
   } catch (e) {
     console.log({e})
   }
@@ -71,7 +76,9 @@ const fetchFeeling = async () => {
 
 const fetchEmotion = async () => {
   try {
-    dataEmotions.value = await $fetch('https://feelit-back.cleverapps.io/api/emotion')
+    dataEmotions.value = await $fetch('api/emotion', {
+      baseURL: apiBase
+    })
   } catch (e) {
     console.log({e})
   }

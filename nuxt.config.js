@@ -7,5 +7,10 @@ export default defineNuxtConfig({
     ],
     css: [
         '~/assets/css/fonts.css'
-    ]
+    ],
+    runtimeConfig: {
+        public: {
+          apiBase: process.env.API_BASE
+        }
+      },
 })
