@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div class="w-44 rounded-xl border-2 border-black shadow-[4px_4px_0_rgba(0,0,0,1)] p-4 bg-blue absolute -top-10 right-8">
+    <div class="hidden lg:block loginCard w-44 rounded-xl border-2 border-black shadow-[4px_4px_0_rgba(0,0,0,1)] p-4 bg-blue absolute top-44"
+         :style="{ left: leftMargePx }">
 
       <button label="Open" @click="isOpen = true" class="flex flex-row rounded-3xl border-2 border-black bg-white py-2 px-3 items-center">
         <img src="/account_2.svg" alt="Icône connexion" class="h-6 mr-2">
@@ -21,11 +21,27 @@
         <LoginForm />
         <button @click="isOpen = false" class="font-grotesk text-sm text-gray-400 pb-6">Fermer</button>
       </UModal>
-
     </div>
-  </div>
 </template>
 
 <script setup>
+import { ref, onMounted } from 'vue'
+
 const isOpen = ref(false)
+const windowWidth = ref(0)
+const leftMarge = ref(windowWidth.value / 2 + 470)
+
+const leftMargePx = computed(() => `${leftMarge.value}px`)
+
+onMounted(() => {
+  windowWidth.value = window.innerWidth
+  window.addEventListener('resize', () => {
+    windowWidth.value = window.innerWidth
+    if(windowWidth.value < 1200){
+      leftMarge.value = windowWidth.value / 3 + 500
+    } else {
+      leftMarge.value = windowWidth.value / 2 + 420
+    }
+  })
+})
 </script>
