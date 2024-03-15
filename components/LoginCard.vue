@@ -1,5 +1,4 @@
 <template>
-  <div>
     <div class="hidden lg:block loginCard w-44 rounded-xl border-2 border-black shadow-[4px_4px_0_rgba(0,0,0,1)] p-4 bg-blue absolute top-44"
          :style="{ left: leftMargePx }">
 
@@ -22,9 +21,7 @@
         <LoginForm />
         <button @click="isOpen = false" class="font-grotesk text-sm text-gray-400 pb-6">Fermer</button>
       </UModal>
-
     </div>
-  </div>
 </template>
 
 <script setup>
