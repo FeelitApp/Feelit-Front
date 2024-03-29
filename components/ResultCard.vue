@@ -15,18 +15,25 @@
           container: 'flex items-center'
         }"
       >
-        <div class="px-4 py-3">
-          <p>Sensation : {{ quizData.sensationData.content }}</p>
-          <p>Feeling : {{ quizData.feelingData.category + quizData.feelingData.emoji }} </p>
-          <p>Emotion : {{ quizData.emotionData.content }}</p>
+        <div class="px-8 py-6 bg-light-pink flex flex-col">
+          <h1 class="text-xl font-bold font-grotesk text-center mb-4">Récapitulatif</h1>
+          <p class="font-grotesk"><strong>Sensation :</strong><br/>{{ quizData.sensationData.content }}</p>
+          <p class="font-grotesk"><strong>Émotion :</strong> {{ quizData.emotionData.content + ' ' + quizData.feelingData.emoji }}</p>
           <textarea
               placeholder="Ajouter une note..."
               v-model="note"
-              class="border border-black"
+              class="h-24 border border-black p-2 mt-4 mb-8 font-grotesk text-sm"
           />
+          <div class="flex flex-col items-center">
+            <Button
+                @click="quizData.note = note"
+                :color="'#94ECEE'"
+                :content="'Enregistrer'"
+                class="mb-4"
+            />
+            <button @click="isOpen = false" class="text-sm text-gray-400 font-grotesk">Continuer sans enregistrer</button>
+          </div>
         </div>
-        <button @click="quizData.note = note" class="pb-6 text-sm text-gray-400 font-grotesk">Enregistrer</button>
-        <button @click="isOpen = false" class="pb-6 text-sm text-gray-400 font-grotesk">Continuer sans enregistrer</button>
       </UModal>
   </div>
 </template>
