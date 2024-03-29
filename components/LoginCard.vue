@@ -1,5 +1,5 @@
 <template>
-    <div class="hidden lg:block loginCard w-44 rounded-xl border-2 border-black shadow-[4px_4px_0_rgba(0,0,0,1)] p-4 bg-blue absolute top-44"
+    <div v-if="shouldShow" class="hidden lg:block loginCard w-44 rounded-xl border-2 border-black shadow-[4px_4px_0_rgba(0,0,0,1)] p-4 bg-blue absolute top-44"
          :style="{ left: leftMargePx }">
 
       <button label="Open" @click="isOpen = true" class="flex flex-row rounded-3xl border-2 border-black bg-white py-2 px-3 items-center">
@@ -25,23 +25,28 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
-
 const isOpen = ref(false)
 const windowWidth = ref(0)
 const leftMarge = ref(windowWidth.value / 2 + 470)
+const shouldShow = ref(false);
 
 const leftMargePx = computed(() => `${leftMarge.value}px`)
 
 onMounted(() => {
-  windowWidth.value = window.innerWidth
+  handleScreenSize()
+  shouldShow.value = true
+
   window.addEventListener('resize', () => {
+    handleScreenSize()
+  })
+
+  function handleScreenSize(){
     windowWidth.value = window.innerWidth
     if(windowWidth.value < 1200){
       leftMarge.value = windowWidth.value / 3 + 500
     } else {
       leftMarge.value = windowWidth.value / 2 + 420
     }
-  })
+  }
 })
 </script>
