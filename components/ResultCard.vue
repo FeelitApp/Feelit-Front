@@ -26,7 +26,7 @@
           />
           <div class="flex flex-col items-center">
             <Button
-                @click="quizData.note = note"
+                @click="quizData.note = note ; isOpen = false"
                 :color="'#94ECEE'"
                 :content="'Enregistrer'"
                 class="mb-4"
