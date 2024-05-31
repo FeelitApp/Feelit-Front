@@ -27,36 +27,4 @@
 
 definePageMeta({colorMode: 'light'})
 
-import { EmailParams, MailerSend, Recipient, Sender } from 'mailersend'
-import { useCompiler } from '#vue-email'
-
-const senderEmail = ref('')
-const senderName = ref('')
-
-const mailerSend = new MailerSend({
-  apiKey: 'mlsn.36bccd326d31bac7654e59273df1ac18c16cb2dd49875a736fd3547cb610baba' || '',
-})
-
-const sentFrom = new Sender(senderEmail, senderName)
-const recipients = [
-  new Recipient('feelit.ada@gmail.com', 'Feelit')
-]
-
-export default defineEventHandler(async (event) => {
-  const template = await useCompiler('welcome.vue', {
-    props: {
-      url: 'https://vuemail.net/',
-    }
-  })
-
-  const options = new EmailParams()
-      .setFrom(sentFrom)
-      .setTo(recipients)
-      .setSubject('This is a Subject')
-      .setHtml(template.html)
-
-  await mailerSend.email.send(options)
-  return { message: 'Email envoyé' }
-})
-
 </script>
