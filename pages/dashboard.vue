@@ -36,7 +36,8 @@
               <div class="bg-pink px-4 py-2 border-b-2 border-black w-full mt-0">
                 <p class="font-grotesk">Calendrier</p>
               </div>
-              <div class="px-6 py-6">
+              <div class="px-4 py-2">
+                <UserCalendar />
               </div>
             </div>
             <Button
@@ -118,7 +119,9 @@
 </template>
 
 <script setup>
-  definePageMeta({colorMode: 'light'})
+import UserCalendar from "~/components/UserCalendar.vue";
+
+definePageMeta({colorMode: 'light'})
 
   const currentDate = new Date();
   const currDay = new Date().getDate();

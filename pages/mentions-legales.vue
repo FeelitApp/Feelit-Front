@@ -5,24 +5,24 @@
       <div class="container flex flex-col px-10 pt-10 pb-12 mx-auto gap-4 lg:pt-20 lg:pb-0 lg:px-40">
         <h1 class="font-grotesk font-medium text-2xl sm:text-3xl">Mentions légales ⚖️</h1>
 
-          <h2 class="font-grotesk font-medium text-2xl">
-            Définitions :
-          </h2>
-          <p class="font-grotesk mb-3 text-sm">
-            <strong>Client :</strong> tout professionnel ou personne physique capable au sens des articles 1123 et suivants du Code civil, ou personne morale, qui visite le Site objet des présentes conditions générales.
-            <br>
-            <strong>Prestations et Services :</strong> <a href="https://www.feelit-app.com">https://www.feelit-app.com</a> met à disposition des Clients :
-            <br>
-            <strong>Contenu :</strong> Ensemble des éléments constituants l’information présente sur le Site, notamment textes – images – vidéos.
-            <br>
-            <strong>Informations clients :</strong> Ci après dénommé « Information (s) » qui correspondent à l’ensemble des données personnelles susceptibles d’être détenues par <a href="https://www.feelit-app.com">https://www.feelit-app.com</a> pour la gestion de votre compte, de la gestion de la relation client et à des fins d’analyses et de statistiques.
-            <br>
-            <strong>Utilisateur :</strong> Internaute se connectant, utilisant le site susnommé.
-            <br>
-            <strong>Informations personnelles :</strong> « Les informations qui permettent, sous quelque forme que ce soit, directement ou non, l'identification des personnes physiques auxquelles elles s'appliquent » (article 4 de la loi n° 78-17 du 6 janvier 1978).
-            <br>
-            Les termes « données à caractère personnel », « personne concernée », « sous traitant » et « données sensibles » ont le sens défini par le Règlement Général sur la Protection des Données (RGPD : n° 2016-679)
-          </p>
+        <h2 class="font-grotesk font-medium text-2xl">
+          Définitions :
+        </h2>
+        <p class="font-grotesk mb-3 text-sm">
+          <strong>Client :</strong> tout professionnel ou personne physique capable au sens des articles 1123 et suivants du Code civil, ou personne morale, qui visite le Site objet des présentes conditions générales.
+          <br>
+          <strong>Prestations et Services :</strong> <a href="https://www.feelit-app.com">https://www.feelit-app.com</a> met à disposition des Clients :
+          <br>
+          <strong>Contenu :</strong> Ensemble des éléments constituants l’information présente sur le Site, notamment textes – images – vidéos.
+          <br>
+          <strong>Informations clients :</strong> Ci après dénommé « Information (s) » qui correspondent à l’ensemble des données personnelles susceptibles d’être détenues par <a href="https://www.feelit-app.com">https://www.feelit-app.com</a> pour la gestion de votre compte, de la gestion de la relation client et à des fins d’analyses et de statistiques.
+          <br>
+          <strong>Utilisateur :</strong> Internaute se connectant, utilisant le site susnommé.
+          <br>
+          <strong>Informations personnelles :</strong> « Les informations qui permettent, sous quelque forme que ce soit, directement ou non, l'identification des personnes physiques auxquelles elles s'appliquent » (article 4 de la loi n° 78-17 du 6 janvier 1978).
+          <br>
+          Les termes « données à caractère personnel », « personne concernée », « sous traitant » et « données sensibles » ont le sens défini par le Règlement Général sur la Protection des Données (RGPD : n° 2016-679)
+        </p>
 
         <h2 class="font-grotesk font-medium text-2xl">
           1. Présentation du site internet
