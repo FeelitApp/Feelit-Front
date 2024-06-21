@@ -122,7 +122,16 @@
 <script setup>
 import UserCalendar from "~/components/UserCalendar.vue";
 
-definePageMeta({colorMode: 'light'})
+definePageMeta({colorMode: 'light'});
+useHead({
+  title: 'Feelit | Tableau de bord',
+  meta: [
+    {
+      name: 'description',
+      content: 'Bienvenue sur votre tableau de bord. Retrouvez ici toutes les informations relatives à votre compte.'
+    }
+  ]
+});
 
   const currentDate = new Date();
   const currDay = new Date().getDate();

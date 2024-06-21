@@ -29,13 +29,15 @@
               type="password"
               name="passwordLogin"
               label="Mot de passe"
-              class="w-full"
+              class="w-full mb-4"
               required="true"
               v-model="passwordLogin"
           />
           <span v-if="errors.emailLogin">{{ errors.emailLogin }}</span>
           <span v-if="errors.passwordLogin">{{ errors.passwordLogin }}</span>
-          <span v-if="errors.code">Votre identifiant est incorrect.</span>
+          <span v-if="errors.code" class="text-sm font-grotesk font-bold text-[#FF7B7B]">
+              Identifiant et/ou mot de passe incorrect(s).
+          </span>
         </div>
         <div class="flex gap-x-6">
           <Button
@@ -43,7 +45,6 @@
               content="Se connecter"
               type="submit"
               link="#"
-              class="mt-4"
           />
         </div>
       </form>
@@ -80,10 +81,10 @@
               type="password"
               name="confirmPassword"
               label="Confirmez votre mot de passe"
-              class="w-full"
+              class="w-full mb-4"
               v-model="confirmPassword"
           />
-          <span v-if="errors.password">
+          <span v-if="errors.password" class="text-sm font-grotesk font-bold text-[#FF7B7B]">
               {{ errors.password }}
             </span>
           <span v-if="errors.blank">
@@ -94,7 +95,6 @@
             color="#93ECEE"
             type="submit"
             content="S'inscrire"
-            class="mt-4"
         />
       </form>
 

@@ -1,11 +1,3 @@
-<script setup>
-const route = useRoute()
-definePageMeta({
-  session: false,
-  colorMode: 'light'
-})
-</script>
-
 <template>
   <div class="relative">
     <LoginCard/>
@@ -75,3 +67,17 @@ definePageMeta({
   </Container>
   </div>
 </template>
+
+<script setup>
+const route = useRoute()
+definePageMeta({
+  session: false,
+  colorMode: 'light'
+})
+useHead({
+  title: 'Feelit | Accueil',
+  meta: [
+    { name: 'description', content: 'Bienvenue sur feelit ! Inspiré de la Roue des Émotions, développée par le psychologue américain Robert Plutchik en 1980, feelit a pour objectif de vous accompagner dans l’identification de vos émotions, afin que vous puissiez les nommer et vous les approprier.' }
+  ]
+})
+</script>

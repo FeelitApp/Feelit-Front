@@ -26,7 +26,7 @@
           />
           <div class="flex flex-col items-center">
             <Button
-                @click="quizData.note = note ; isOpen = false"
+                @click="quizData.note = note ; isOpen = false ; submitData()"
                 :color="'#94ECEE'"
                 :content="'Enregistrer'"
                 class="mb-4"
@@ -44,6 +44,34 @@ import { useQuizDataStore } from "~/stores/quizData.js";
 const isOpen = ref(false)
 
 const quizData = useQuizDataStore()
+
+const config = useRuntimeConfig()
+const apiBase = config.public.apiBase
+const date = ref('');
+const sensationId = ref('');
+const feelingId = ref('');
+const emotionId = ref('');
 const note = ref('')
 
+const submitData = async () => {
+
+  const resultData = new FormData();
+  resultData.append('date', new Date());
+  resultData.append('sensationId', quizData.sensationData.id);
+  resultData.append('feelingId', quizData.feelingData.id);
+  resultData.append('emotionId', quizData.emotionData.id);
+  resultData.append('note', quizData.note);
+
+  try {
+    await $fetch('results', {
+      method: 'POST',
+      baseURL: apiBase,
+      body: resultData
+    });
+
+  } catch (error) {
+    console.log("ma bite");
+  }
+
+}
 </script>

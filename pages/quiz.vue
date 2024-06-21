@@ -41,6 +41,15 @@ import {ref} from 'vue';
 import ResultCard from "~/components/ResultCard.vue";
 
 definePageMeta({colorMode: 'light'});
+useHead({
+  title: 'Feelit | Questionnaire',
+  meta: [
+    {
+      name: 'description',
+      content: 'Répondez au questionnaire pour parvenir à identifier et affiner vos émotions.'
+    }
+  ]
+});
 
 const currentStep = ref(1);
 

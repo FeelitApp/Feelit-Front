@@ -7,7 +7,7 @@
         :type="type"
         :name="name"
         :required="props.required"
-        class="font-grotesk px-3 py-1 outline outline-1 outline-offset-1 outline-black rounded-2xl w-full selection:bg-light-pink"
+        class="font-grotesk text-sm px-3 py-1 outline outline-1 outline-offset-1 outline-black rounded-2xl w-full selection:bg-light-pink"
         :value="modelValue"
         @input="$emit('update:modelValue', $event.target.value)"
     />
