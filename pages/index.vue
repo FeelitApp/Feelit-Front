@@ -1,6 +1,9 @@
 <script setup>
 const route = useRoute()
-definePageMeta({colorMode: 'light'})
+definePageMeta({
+  session: false,
+  colorMode: 'light'
+})
 </script>
 
 <template>
@@ -8,7 +11,7 @@ definePageMeta({colorMode: 'light'})
     <LoginCard/>
     <Container>
       <Hero/>
-      <div class="container flex flex-col px-10 pt-10 pb-12 mx-auto gap-8 lg:pt-20 lg:pb-0 lg:px-40">
+      <div class="container flex flex-col gap-8 px-10 pt-10 pb-12 mx-auto lg:pt-20 lg:pb-0 lg:px-40">
 
         <div class="flex flex-col gap-4 font-grotesk text-md lg:text-lg lg:leading-normal">
           <p>

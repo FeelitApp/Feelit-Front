@@ -33,7 +33,10 @@
 </template>
 
 <script setup>
-definePageMeta({ colorMode: 'light' })
+definePageMeta({
+  session: false,
+  colorMode: 'light'
+})
 
 const name = ref('');
 const email = ref('');
