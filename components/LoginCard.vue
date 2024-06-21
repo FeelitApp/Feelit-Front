@@ -2,9 +2,9 @@
     <div v-if="shouldShow" class="hidden lg:block loginCard w-44 rounded-xl border-2 border-black shadow-[4px_4px_0_rgba(0,0,0,1)] p-4 bg-blue absolute top-44"
          :style="{ left: leftMargePx }">
 
-      <button label="Open" @click="isOpen = true" class="flex flex-row rounded-3xl border-2 border-black bg-white py-2 px-3 items-center">
+      <button label="Open" @click="isOpen = true" class="flex flex-row items-center px-3 py-2 bg-white border-2 border-black rounded-3xl">
         <img src="/account_2.svg" alt="Icône connexion" class="h-6 mr-2">
-        <span class="text-md font-bold font-grotesk">Connexion</span>
+        <span class="font-bold text-md font-grotesk">Connexion</span>
       </button>
 
       <UModal v-model="isOpen"
@@ -19,7 +19,7 @@
         }"
       >
         <LoginForm />
-        <button @click="isOpen = false" class="font-grotesk text-sm text-gray-400 pb-6">Fermer</button>
+        <button @click="isOpen = false" class="pb-6 text-sm text-gray-400 font-grotesk">Fermer</button>
       </UModal>
     </div>
 </template>

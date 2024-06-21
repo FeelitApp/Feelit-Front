@@ -11,5 +11,8 @@
 </template>
 
 <script setup>
-definePageMeta({colorMode: 'light'})
+definePageMeta({
+  session: false,
+  colorMode: 'light'
+})
 </script>
