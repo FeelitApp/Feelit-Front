@@ -3,7 +3,7 @@
          :style="{ left: leftMargePx }">
       <button label="Open" @click="isOpen = true" class="flex flex-row rounded-3xl border-2 border-black bg-white py-2 px-3 items-center">
         <img src="/account_2.svg" alt="Icône connexion" class="h-6 mr-2">
-        <span class="text-md font-bold font-grotesk">Connexion</span>
+        <span class="font-bold text-md font-grotesk">Connexion</span>
       </button>
     </div>
 

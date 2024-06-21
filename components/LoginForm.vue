@@ -158,17 +158,19 @@ const submitRegister = async () => {
 }
 
 const submitLogin = async () => {
+  const { $session } = useNuxtApp()
   const formData = new FormData();
   formData.append('email', emailLogin.value);
   formData.append('password', passwordLogin.value);
 
   try {
     const response = await $fetch('login', {
-      method: 'POST',
-      baseURL: apiBase,
-      body: formData
+        method: 'POST',
+        baseURL: useRuntimeConfig().public.apiBase,
+        credentials: 'include',
+        body: formData
     });
-
+    
     if (response.data !== undefined) {
       router.push('/dashboard');
     }

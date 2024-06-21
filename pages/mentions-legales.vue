@@ -252,7 +252,10 @@
 </template>
 
 <script setup>
-definePageMeta({colorMode: 'light'});
+definePageMeta({
+  session: false,
+  colorMode: 'light'
+})
 useHead({
   title: 'Feelit | Mentions légales',
   meta: [
@@ -261,5 +264,5 @@ useHead({
       content: 'Mentions légales liées à l’utilisation de la plateforme feelit.'
     }
   ]
-});
+})
 </script>

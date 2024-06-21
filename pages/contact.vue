@@ -41,7 +41,10 @@
 </template>
 
 <script setup>
-definePageMeta({colorMode: 'light'});
+definePageMeta({
+  session: false,
+  colorMode: 'light'
+})
 useHead({
   title: 'Feelit | Contact',
   meta: [
