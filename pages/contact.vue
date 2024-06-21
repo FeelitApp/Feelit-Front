@@ -41,7 +41,16 @@
 </template>
 
 <script setup>
-definePageMeta({ colorMode: 'light' })
+definePageMeta({colorMode: 'light'});
+useHead({
+  title: 'Feelit | Contact',
+  meta: [
+    {
+      name: 'description',
+      content: 'Une question, une suggestion ? Contactez l’équipe feelit !'
+    }
+  ]
+});
 
 const name = ref('');
 const email = ref('');
