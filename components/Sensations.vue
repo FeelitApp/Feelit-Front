@@ -1,3 +1,32 @@
+<script setup>
+import {useQuizDataStore} from "~/stores/quizData.js";
+import { api } from '@/api/client'
+
+const data = ref('')
+const selectedSensation = ref(0)
+const quizData = useQuizDataStore()
+
+function select(data) {
+  selectedSensation.value = data.id
+  quizData.sensationData = data
+}
+
+async function fetchSensation () {
+  try {
+    data.value = await api.data.getSensation()
+  } catch (e) {
+    console.log({e})
+  }
+}
+
+fetchSensation()
+onMounted(() => {
+  if (quizData.sensationId) {
+    selectedSensation.value = quizData.sensationId
+  }
+})
+</script>
+
 <template>
   <div
       class="rounded-xl border-0 sm:border-2 sm:border-black overflow-hidden shadow-none sm:shadow-[4px_4px_0_rgba(0,0,0,1)] flex flex-col sm:px-12 sm:py-12 lg:mb-12">
@@ -18,37 +47,3 @@
 
   </div>
 </template>
-
-<script setup>
-import {useQuizDataStore} from "~/stores/quizData.js";
-
-const config = useRuntimeConfig()
-const apiBase = config.public.apiBase
-
-const data = ref('')
-const selectedSensation = ref(0)
-const quizData = useQuizDataStore()
-
-function select(data) {
-  selectedSensation.value = data.id
-  quizData.sensationData = data
-}
-
-const fetchSensation = async () => {
-  try {
-    data.value = await $fetch('api/sensation', {
-      baseURL: apiBase,
-    })
-  } catch (e) {
-    console.log({e})
-  }
-}
-
-fetchSensation()
-
-onMounted(() => {
-  if (quizData.sensationId) {
-    selectedSensation.value = quizData.sensationId
-  }
-})
-</script>

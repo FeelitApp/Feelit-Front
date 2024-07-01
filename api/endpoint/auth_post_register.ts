@@ -1,5 +1,4 @@
 import { useRuntimeConfig } from '#app'
-import { UserDto } from '../dto/user_dto'
 import { isBadRequest } from '~/api/utils'
 
 export interface AuthPostRegisterInput {

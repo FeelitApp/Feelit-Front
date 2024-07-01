@@ -5,17 +5,17 @@ export interface User {
 }
 
 export class UserDto implements User {
-constructor (
-      readonly uuid: string,
-      readonly email: string,
-      readonly username: string,
-) {}
+  constructor (
+    readonly uuid: string,
+    readonly email: string,
+    readonly username: string,
+  ) {}
 
-public static fromJson (data: User): UserDto {
-  return new UserDto(
-    data.uuid,
-    data.email,
-    data.username,
-  )
-}
+  public static fromJson (data: User): UserDto {
+    return new UserDto(
+      data.uuid,
+      data.email,
+      data.username,
+    )
+  }
 }

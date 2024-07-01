@@ -1,9 +1,9 @@
 <script setup>
-const route = useRoute()
 definePageMeta({
   session: false,
   colorMode: 'light'
 })
+
 useHead({
   title: 'Feelit | Accueil',
   meta: [
