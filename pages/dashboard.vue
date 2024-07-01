@@ -199,4 +199,4 @@ onMounted(() => {
       <Footer/>
     </Container>
   </div>
-</template>../api/endpoint/account_patch_infos../api/endpoint/account_post_infos
+</template>
