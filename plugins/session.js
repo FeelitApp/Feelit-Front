@@ -1,3 +1,5 @@
+import { api } from '@/api/client'
+
 export default defineNuxtPlugin(() => {
   const sessionStore = useSessionStore()
   const { account } = storeToRefs(sessionStore)
@@ -17,6 +19,9 @@ export default defineNuxtPlugin(() => {
         method: 'POST',
         credentials: 'include'
       })
+    },
+    async update(email, username) {
+      return await api.account.update(email, username)
     }
   }
 

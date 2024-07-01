@@ -1,5 +1,6 @@
 <script setup>
-import UserCalendar from "~/components/UserCalendar.vue";
+import UserCalendar from "~/components/UserCalendar.vue"
+import { AccountPostInfosBadRequestImpl } from '../api/endpoint/account_post_infos'
 
 definePageMeta({colorMode: 'light'});
 useHead({
@@ -14,6 +15,12 @@ useHead({
 
 const sessionStore = useSessionStore()
 const account = sessionStore.account;
+
+const isUpdated = ref(false);
+const errorUpdate = reactive({
+  username: '',
+  email: ''
+})
 
 const currentDate = new Date();
 const currDay = new Date().getDate();
@@ -30,6 +37,18 @@ async function logout() {
   const { $session } = useNuxtApp()
   await $session.logout();
   navigateTo({ name: 'index' });
+}
+
+async function update() {
+  const { $session } = useNuxtApp()
+  const output = await $session.update(account.data.email, account.data.username)
+  if (output instanceof AccountPostInfosBadRequestImpl) {
+    errorUpdate.username = output.username
+    errorUpdate.email = output.email
+    return
+  }
+  
+  isUpdated.value = true;
 }
 
 onMounted(() => {
@@ -131,13 +150,13 @@ onMounted(() => {
                   :type="'username'"
                   :name="'username'"
                   :label="'Nom d\'utilisateur :'"
-                  :model-value="account.data.username"
+                  v-model="account.data.username"
               />
               <Input
                   :type="'email'"
                   :name="'email'"
                   :label="'E-mail :'"
-                  :model-value="account.data.email"
+                  v-model="account.data.email"
               />
               <Input
                   :type="'password'"
@@ -149,12 +168,16 @@ onMounted(() => {
                   :name="'confirmPassword'"
                   :label="'Confirmer le mot de passe :'"
               />
+              <span class="text-green-400 font-grotesk" v-if="isUpdated">Les modifications ont bien été enregistrées.</span>
+              <span class="text-red-400 font-grotesk" v-if="errorUpdate.username">{{ errorUpdate.username.at(0) }}</span>
+              <span class="text-red-400 font-grotesk" v-if="errorUpdate.email">{{ errorUpdate.email.at(0) }}</span>
             </div>
             <div class="mx-auto">
               <Button
                   class="text-md"
                   :color="'#FFFFFF'"
                   :content="'Enregistrer les modifications'"
+                  @click="update"
               />
             </div>
           </div>
@@ -176,4 +199,4 @@ onMounted(() => {
       <Footer/>
     </Container>
   </div>
-</template>
+</template>../api/endpoint/account_patch_infos../api/endpoint/account_post_infos
