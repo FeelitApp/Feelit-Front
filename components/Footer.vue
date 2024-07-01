@@ -1,6 +1,5 @@
 <template>
-
-    <div class="flex flex-wrap justify-center sm:justify-between px-8 py-8 lg:px-40 lg:pt-20 lg:pb-16 bg-light-pink gap-5 wrap lg:bg-white lg:flex-row">
+    <div class="flex flex-wrap justify-center gap-5 px-8 py-8 sm:justify-between lg:px-40 lg:pt-20 lg:pb-16 bg-light-pink wrap lg:bg-white lg:flex-row">
         <NuxtLink to="/glossaire">
           <Button
               :color="'#FFF'"
@@ -24,5 +23,3 @@
       </NuxtLink>
     </div>
 </template>
-<script setup lang="ts">
-</script>

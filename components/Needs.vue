@@ -1,3 +1,19 @@
+<script setup>
+import { api } from '@/api/client'
+
+const data = ref('')
+
+async function fetchNeed () {
+  try {
+    data.value = await api.data.getNeed()
+  } catch (e) {
+    console.log({e})
+  }
+}
+
+fetchNeed()
+</script>
+
 <template>
   <h2 class="mx-auto mb-8 text-3xl font-semibold font-grotesk">
     Les besoins </h2>
@@ -11,21 +27,3 @@
     </div>
   </div>
 </template>
-
-<script setup>
-const config = useRuntimeConfig()
-const apiBase = config.public.apiBase
-const data = ref('')
-
-const fetchNeed = async () => {
-  try {
-    data.value = await $fetch('api/need', {
-      baseURL: apiBase,
-    })
-  } catch (e) {
-    console.log({e})
-  }
-}
-
-fetchNeed()
-</script>

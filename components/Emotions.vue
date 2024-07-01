@@ -1,3 +1,51 @@
+<script setup>
+import { api } from '@/api/client'
+import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/vue/24/outline';
+import { useQuizDataStore } from "~/stores/quizData.js";
+
+const dataFeelings = ref([]);
+const dataEmotions = ref([]);
+
+const openItems = ref({});
+
+const quizData = useQuizDataStore()
+
+const toggle = (id) => {
+  openItems.value[id] = !openItems.value[id];
+};
+
+const isOpen = (id) => {
+  return !!openItems.value[id];
+};
+
+async function fetchFeeling () {
+  try {
+    dataFeelings.value = await api.data.getFeeling()
+  } catch (e) {
+    console.log({e})
+  }
+}
+
+async function fetchEmotion () {
+  try {
+    dataEmotions.value = await api.data.getEmotion()
+  } catch (e) {
+    console.log({e})
+  }
+}
+
+const selectedEmotion = ref(0)
+
+function select(dataEmotion, dataFeeling) {
+  selectedEmotion.value = dataEmotion.id
+  quizData.emotionData = dataEmotion
+  quizData.feelingData = dataFeeling
+}
+
+fetchFeeling()
+fetchEmotion()
+</script>
+
 <template>
   <div class="rounded-xl border-0 sm:border-2 sm:border-black overflow-hidden shadow-none sm:shadow-[4px_4px_0_rgba(0,0,0,1)] flex flex-col sm:px-12 sm:py-12 lg:mb-12">
     <h2 class="mx-auto mb-8 text-3xl font-semibold text-center font-grotesk">
@@ -40,58 +88,3 @@
 
   </div>
 </template>
-
-<script setup>
-import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/vue/24/outline';
-import { useQuizDataStore } from "~/stores/quizData.js";
-
-const config = useRuntimeConfig()
-const apiBase = config.public.apiBase
-
-const dataFeelings = ref([]);
-const dataEmotions = ref([]);
-
-const openItems = ref({});
-
-const quizData = useQuizDataStore()
-console.log(quizData.sensationData)
-
-const toggle = (id) => {
-  openItems.value[id] = !openItems.value[id];
-};
-
-const isOpen = (id) => {
-  return !!openItems.value[id];
-};
-
-const fetchFeeling = async () => {
-  try {
-    dataFeelings.value = await $fetch('api/feeling', {
-      baseURL: apiBase
-    })
-  } catch (e) {
-    console.log({e})
-  }
-}
-
-const fetchEmotion = async () => {
-  try {
-    dataEmotions.value = await $fetch('api/emotion', {
-      baseURL: apiBase
-    })
-  } catch (e) {
-    console.log({e})
-  }
-}
-
-const selectedEmotion = ref(0)
-
-function select(dataEmotion, dataFeeling) {
-  selectedEmotion.value = dataEmotion.id
-  quizData.emotionData = dataEmotion
-  quizData.feelingData = dataFeeling
-}
-
-fetchFeeling()
-fetchEmotion()
-</script>

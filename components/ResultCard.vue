@@ -15,14 +15,14 @@
           container: 'flex items-center'
         }"
       >
-        <div class="px-8 py-6 bg-light-pink flex flex-col">
-          <h1 class="text-xl font-bold font-grotesk text-center mb-4">Récapitulatif</h1>
+        <div class="flex flex-col px-8 py-6 bg-light-pink">
+          <h1 class="mb-4 text-xl font-bold text-center font-grotesk">Récapitulatif</h1>
           <p class="font-grotesk"><strong>Sensation :</strong><br/>{{ quizData.sensationData.content }}</p>
           <p class="font-grotesk"><strong>Émotion :</strong> {{ quizData.emotionData.content + ' ' + quizData.feelingData.emoji }}</p>
           <textarea
               placeholder="Ajouter une note..."
               v-model="note"
-              class="h-24 border border-black p-2 mt-4 mb-8 font-grotesk text-sm"
+              class="h-24 p-2 mt-4 mb-8 text-sm border border-black font-grotesk"
           />
           <div class="flex flex-col items-center">
             <Button
@@ -47,10 +47,6 @@ const quizData = useQuizDataStore()
 
 const config = useRuntimeConfig()
 const apiBase = config.public.apiBase
-const date = ref('');
-const sensationId = ref('');
-const feelingId = ref('');
-const emotionId = ref('');
 const note = ref('')
 
 const submitData = async () => {

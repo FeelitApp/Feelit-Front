@@ -14,15 +14,14 @@ export default defineNuxtRouteMiddleware(async (to) => {
   const routeName = to.name?.toString() ?? 'undefined_route'
 
   if (guardDisabled && account) {
-    console.debug(`[middleware.session] ${routeName}: an account is already logged in`)
-    return onNuxtReady(() => navigateTo({ name: 'index' }))
+    console.log(`[middleware.session] ${routeName}: an account is already logged in`)
   }
 
   if (guardDisabled) {
     return
   }
 
-  if (!account) {
+  if (!account && !guardDisabled) {
     console.debug(`[middleware.session] ${routeName}: an account is required`)
     return onNuxtReady(() => navigateTo({ name: 'index' }))
   }
