@@ -1,3 +1,63 @@
+<script setup>
+import { api } from '@/api/client'
+import { AuthPostRegisterBadRequestImpl } from '@/api/endpoint/auth_post_register'
+import { AuthPostLoginBadRequestImpl } from '@/api/endpoint/auth_post_login'
+
+const router = useRouter()
+
+const activeTab = ref("Connexion");
+
+const registerData = reactive({
+  email: '',
+  username: '',
+  password: '',
+});
+
+const loginData = reactive({
+  email: '',
+  password: '',
+});
+
+const errors = ref({
+  email: '',
+  blank: '',
+  password: '',
+  code: '',
+});
+
+async function submitRegister () {
+  const output = await api.auth.register(
+    registerData.email,
+    registerData.username,
+    registerData.password,
+  )
+
+  if (output instanceof AuthPostRegisterBadRequestImpl) {
+    errors.value.email = output.email || '';
+    errors.value.username = output.username || '';
+    errors.value.password = output.password || '';
+    return
+  }
+  activeTab.value = 'Connexion';
+}
+
+async function submitLogin () {
+  const output = await api.auth.login(
+    loginData.email,
+    loginData.password
+  )
+
+  if (output instanceof AuthPostLoginBadRequestImpl) {
+    errors.value.emailLogin = output.email || '';
+    errors.value.passwordLogin = output.password || '';
+    errors.value.code = output.code || '';
+    return
+  }
+
+  router.push('/dashboard');
+};
+</script>
+
 <template>
   <div class="w-full m-auto overflow-hidden bg-white">
 
@@ -22,7 +82,7 @@
             label="E-mail"
             required="true"
             class="w-full"
-            v-model="emailLogin"
+            v-model="loginData.email"
         />
         <div class="relative w-full">
           <Input
@@ -31,10 +91,10 @@
               label="Mot de passe"
               class="w-full mb-4"
               required="true"
-              v-model="passwordLogin"
+              v-model="loginData.password"
           />
-          <span v-if="errors.emailLogin">{{ errors.emailLogin }}</span>
-          <span v-if="errors.passwordLogin">{{ errors.passwordLogin }}</span>
+          <span v-if="errors.email">{{ errors.email.at(0) }}</span>
+          <span v-if="errors.password">{{ errors.password.at(0) }}</span>
           <span v-if="errors.code" class="text-sm font-grotesk font-bold text-[#FF7B7B]">
               Identifiant et/ou mot de passe incorrect(s).
           </span>
@@ -54,7 +114,7 @@
             name="username"
             label="Nom d'utilisateur"
             class="w-full"
-            v-model="username"
+            v-model="registerData.username"
         />
         <div class="relative w-full">
           <Input
@@ -62,7 +122,7 @@
               name="email"
               label="E-mail"
               class="w-full"
-              v-model="email"
+              v-model="registerData.email"
               required
           />
           <span v-if="errors.email">
@@ -74,16 +134,9 @@
             name="password"
             label="Mot de passe"
             class="w-full"
-            v-model="password"
+            v-model="registerData.password"
         />
         <div class="relative w-full">
-          <Input
-              type="password"
-              name="confirmPassword"
-              label="Confirmez votre mot de passe"
-              class="w-full mb-4"
-              v-model="confirmPassword"
-          />
           <span v-if="errors.password" class="text-sm font-grotesk font-bold text-[#FF7B7B]">
               {{ errors.password }}
             </span>
@@ -101,86 +154,3 @@
     </div>
   </div>
 </template>
-
-
-
-<script setup>
-const config = useRuntimeConfig()
-const apiBase = config.public.apiBase
-
-const activeTab = ref("Connexion");
-const email = ref('');
-const emailLogin = ref('');
-const username = ref('');
-const password = ref('');
-const passwordLogin = ref('');
-const confirmPassword = ref('');
-const router = useRouter()
-
-
-const errors = ref({
-  email: '',
-  blank: '',
-  password: '',
-  code: '',
-});
-
-const validateForm = () => {
-  errors.value.password = password.value !== confirmPassword.value
-      ? "Les deux mots de passe ne sont pas identiques." : '';
-
-  return !Object.values(errors.value).some(error => error !== '');
-};
-
-const submitRegister = async () => {
-  if (!validateForm()) return;
-
-  const formData = new FormData();
-  formData.append('email', email.value);
-  formData.append('username', username.value);
-  formData.append('password', password.value);
-
-  try {
-    await $fetch('register', {
-      method: 'POST',
-      baseURL: apiBase,
-      body: formData
-    });
-
-    activeTab.value = 'Connexion';
-  } catch (error) {
-    if (error.data.errors) {
-      errors.value.email = error.data.errors.email || '';
-      errors.value.username = error.data.errors.username || '';
-      errors.value.password = error.data.errors.password || '';
-    }
-  }
-}
-
-const submitLogin = async () => {
-  const { $session } = useNuxtApp()
-  const formData = new FormData();
-  formData.append('email', emailLogin.value);
-  formData.append('password', passwordLogin.value);
-
-  try {
-    const response = await $fetch('login', {
-        method: 'POST',
-        baseURL: useRuntimeConfig().public.apiBase,
-        credentials: 'include',
-        body: formData
-    });
-    
-    if (response.data !== undefined) {
-      router.push('/dashboard');
-    }
-  } catch (error) {
-    if (error.data.errors) {
-      errors.value.emailLogin = error.data.errors.emailLogin || '';
-      errors.value.passwordLogin = error.data.errors.passwordLogin || '';
-    } else {
-      errors.value.code = error.data.code || '';
-    }
-  }
-};
-</script>
