@@ -1,5 +1,62 @@
+<script setup>
+import UserCalendar from "~/components/UserCalendar.vue";
+
+definePageMeta({colorMode: 'light'});
+useHead({
+  title: 'Feelit | Tableau de bord',
+  meta: [
+    {
+      name: 'description',
+      content: 'Bienvenue sur votre tableau de bord. Retrouvez ici toutes les informations relatives à votre compte.'
+    }
+  ]
+});
+
+const sessionStore = useSessionStore()
+const account = sessionStore.account;
+
+const currentDate = new Date();
+const currDay = new Date().getDate();
+const currMonth = currentDate.toLocaleString('default', { month: 'long' });
+const currYear = new Date().getFullYear();
+
+const location = ref(null);
+const gettingLocation = ref(false);
+const errorStr = ref(null);
+const meteoData = ref(null);
+
+
+async function logout() {
+  const { $session } = useNuxtApp()
+  await $session.logout();
+  navigateTo({ name: 'index' });
+}
+
+onMounted(() => {
+  if (!("geolocation" in navigator)) {
+    errorStr.value = 'Geolocation pas disponible';
+    return;
+  }
+
+  gettingLocation.value = true;
+
+  navigator.geolocation.getCurrentPosition(async pos => {
+    gettingLocation.value = false;
+    location.value = pos;
+
+    const url = `http://api.weatherapi.com/v1/current.json?key=49043bfb42f6476388b134930231512&q=${pos.coords.latitude},${pos.coords.longitude}&aqi=no`;
+
+    const data = await $fetch(url);
+    meteoData.value = data
+  }, err => {
+    gettingLocation.value = false;
+    errorStr.value = err.message;
+  });
+});
+</script>
+
 <template>
-  <div>
+  <div v-if="sessionStore.account">
     <Container>
       <Hero/>
 
@@ -7,7 +64,7 @@
 
         <div class="flex flex-col gap-6 sm:gap-10 sm:flex sm:flex-row sm:justify-between">
           <div class="flex flex-col gap-4 sm:w-[50%]">
-            <h1 class="text-2xl font-medium font-grotesk sm:text-3xl">Bonjour Théodule44 👋</h1>
+            <h1 class="text-2xl font-medium font-grotesk sm:text-3xl">Bonjour {{ account.data.username }} 👋</h1>
             <p class="whitespace-pre-line font-grotesk">
               Bienvenue sur votre tableau de bord.<br>Vous trouverez sur cette page toutes les informations relatives à votre compte, ainsi que l’historique de vos émotions.            </p>
           </div>
@@ -74,11 +131,13 @@
                   :type="'username'"
                   :name="'username'"
                   :label="'Nom d\'utilisateur :'"
+                  :model-value="account.data.username"
               />
               <Input
                   :type="'email'"
                   :name="'email'"
                   :label="'E-mail :'"
+                  :model-value="account.data.email"
               />
               <Input
                   :type="'password'"
@@ -118,57 +177,3 @@
     </Container>
   </div>
 </template>
-
-<script setup>
-import UserCalendar from "~/components/UserCalendar.vue";
-
-definePageMeta({colorMode: 'light'});
-useHead({
-  title: 'Feelit | Tableau de bord',
-  meta: [
-    {
-      name: 'description',
-      content: 'Bienvenue sur votre tableau de bord. Retrouvez ici toutes les informations relatives à votre compte.'
-    }
-  ]
-});
-
-  const currentDate = new Date();
-  const currDay = new Date().getDate();
-  const currMonth = currentDate.toLocaleString('default', { month: 'long' });
-  const currYear = new Date().getFullYear();
-
-  const location = ref(null);
-  const gettingLocation = ref(false);
-  const errorStr = ref(null);
-  const meteoData = ref(null);
-
-
-  async function logout() {
-    const { $session } = useNuxtApp()
-    await $session.logout();
-    navigateTo({ name: 'index' });
-  }
-  
-  onMounted(() => {
-    if (!("geolocation" in navigator)) {
-      errorStr.value = 'Geolocation pas disponible';
-      return;
-    }
-
-    gettingLocation.value = true;
-
-    navigator.geolocation.getCurrentPosition(async pos => {
-      gettingLocation.value = false;
-      location.value = pos;
-
-      const url = `http://api.weatherapi.com/v1/current.json?key=49043bfb42f6476388b134930231512&q=${pos.coords.latitude},${pos.coords.longitude}&aqi=no`;
-
-      const data = await $fetch(url);
-      meteoData.value = data
-    }, err => {
-      gettingLocation.value = false;
-      errorStr.value = err.message;
-    });
-  });
-</script>
