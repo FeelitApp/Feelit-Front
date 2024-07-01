@@ -1,13 +1,6 @@
-<template>
-  <VueCalendar borderless transparent expanded :attributes="attrs"/>
-</template>
-
-
 <script setup>
 import { Calendar as VueCalendar } from 'v-calendar';
 import 'v-calendar/style.css';
-
-import { ref } from 'vue';
 
 const attrs = ref([
   {
@@ -16,6 +9,11 @@ const attrs = ref([
     dates: new Date(),
   },
 ]);
-
 </script>
+
+<template>
+  <VueCalendar borderless transparent expanded :attributes="attrs"/>
+</template>
+
+
 

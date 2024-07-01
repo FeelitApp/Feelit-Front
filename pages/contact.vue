@@ -3,10 +3,10 @@
     <Container>
       <Hero/>
 
-        <div class="container flex flex-col px-10 pt-10 pb-12 mx-auto gap-8 lg:pt-20 lg:pb-0 lg:px-40">
-          <h1 class="font-grotesk font-medium text-2xl sm:text-3xl">Contact 💬</h1>
+        <div class="container flex flex-col gap-8 px-10 pt-10 pb-12 mx-auto lg:pt-20 lg:pb-0 lg:px-40">
+          <h1 class="text-2xl font-medium font-grotesk sm:text-3xl">Contact 💬</h1>
 
-          <p class="font-grotesk whitespace-pre-line mb-3">
+          <p class="mb-3 whitespace-pre-line font-grotesk">
             Vous avez une question au sujet de Feelit ou besoin d'une information ?
             <br>Vous souhaitez nous partager vos commentaires, idées ou axes d'amélioration ?
             <br>Conctactez-nous via le formulaire ci-dessous, nous tâcherons de vous répondre dès que possible !
@@ -17,11 +17,11 @@
             <Input v-model="email" label="Votre adresse e-mail :"/>
             <Input v-model="object" label="Objet de votre message :"/>
             <div class="flex flex-col">
-              <label for="message" class="font-grotesk text-sm mb-1">Votre message :</label>
+              <label for="message" class="mb-1 text-sm font-grotesk">Votre message :</label>
               <textarea
                   id="message"
                   v-model="message"
-                  class="h-32 border border-black p-2 rounded-2xl font-grotesk text-sm"
+                  class="h-32 p-2 text-sm border border-black rounded-2xl font-grotesk"
               />
             </div>
           </div>
@@ -31,7 +31,7 @@
               color="#93ECEE"
               type="submit"
               content="Envoyer"
-              class="mt-4 mx-auto">
+              class="mx-auto mt-4">
           </Button>
 
         </div>
@@ -45,6 +45,7 @@ definePageMeta({
   session: false,
   colorMode: 'light'
 })
+
 useHead({
   title: 'Feelit | Contact',
   meta: [

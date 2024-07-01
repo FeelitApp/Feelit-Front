@@ -1,3 +1,19 @@
+<script setup>
+definePageMeta({
+  session: false,
+  colorMode: 'light'
+})
+useHead({
+  title: 'Feelit | Glossaire',
+  meta: [
+    {
+      name: 'description',
+      content: 'Ce glossaire a pour but de vous apportez des informations pratiques, des définitions, etc. pour vous aider à mieux identifier vos émotions.'
+    }
+  ]
+})
+</script>
+
 <template>
   <div>
     <Container>
@@ -110,19 +126,3 @@
     </Container>
   </div>
 </template>
-
-<script setup>
-definePageMeta({
-  session: false,
-  colorMode: 'light'
-})
-useHead({
-  title: 'Feelit | Glossaire',
-  meta: [
-    {
-      name: 'description',
-      content: 'Ce glossaire a pour but de vous apportez des informations pratiques, des définitions, etc. pour vous aider à mieux identifier vos émotions.'
-    }
-  ]
-})
-</script>
