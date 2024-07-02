@@ -10,6 +10,10 @@ useHead({
     { name: 'description', content: 'Bienvenue sur feelit ! Inspiré de la Roue des Émotions, développée par le psychologue américain Robert Plutchik en 1980, feelit a pour objectif de vous accompagner dans l’identification de vos émotions, afin que vous puissiez les nommer et vous les approprier.' }
   ]
 })
+
+const isOpen = ref(false)
+
+const sessionStore = useSessionStore()
 </script>
 
 <template>
@@ -66,18 +70,40 @@ useHead({
               :content="'En répondant aux différentes questions posées, identifiez vos émotions et accédez à des exemples de besoins associés.'"
               :button="true"
           >
-            <NuxtLink to="/quiz">
+            <NuxtLink 
+              v-if="sessionStore.account"
+              to="/quiz">
               <Button
                   :bold="true"
                   :color="'#93ECEE'"
                   :content="'Commencer'"
               />
             </NuxtLink>
-
+            <Button
+                v-else
+                @click="isOpen = true"
+                :bold="true"
+                :color="'#93ECEE'"
+                :content="'Commencer'"
+            />
           </Card>
         </div>
       </div>
       <Footer/>
   </Container>
+  <UModal v-model="isOpen"
+          :ui="{
+          overlay: {
+            background: 'bg-gray-700/75'
+          },
+          rounded: 'rounded-xl',
+          shadow: 'shadow-[4px_4px_0_rgba(0,0,0,1)]',
+          base: 'border-black border-2',
+          container: 'flex items-center'
+        }"
+  >
+    <LoginForm />
+    <button @click="isOpen = false" class="pb-6 text-sm text-gray-400 font-grotesk">Fermer</button>
+  </UModal>
   </div>
 </template>
