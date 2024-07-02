@@ -3,6 +3,11 @@ import { api } from '@/api/client'
 import { AuthPostRegisterBadRequestImpl } from '@/api/endpoint/auth_post_register'
 import { AuthPostLoginBadRequestImpl } from '@/api/endpoint/auth_post_login'
 
+const props = defineProps({
+  'from': String
+});
+
+
 const router = useRouter()
 
 const activeTab = ref("Connexion");
@@ -54,7 +59,8 @@ async function submitLogin () {
     return
   }
 
-  router.push('/dashboard');
+  if (props.from === 'Start') router.push('/quiz');
+  else router.push('/dashboard');
 };
 </script>
 

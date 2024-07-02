@@ -102,7 +102,7 @@ const sessionStore = useSessionStore()
           container: 'flex items-center'
         }"
   >
-    <LoginForm />
+    <LoginForm :from="'Start'"/>
     <button @click="isOpen = false" class="pb-6 text-sm text-gray-400 font-grotesk">Fermer</button>
   </UModal>
   </div>
