@@ -1,9 +1,8 @@
 <script setup>
-import {ref} from 'vue';
 import ResultCard from "~/components/ResultCard.vue";
 
 definePageMeta({
-  session: false,
+  session: true,
   colorMode: 'light'
 })
 
