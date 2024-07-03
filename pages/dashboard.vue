@@ -41,6 +41,10 @@ async function logout() {
 
 async function update() {
   const { $session } = useNuxtApp()
+  
+  errorUpdate.username = undefined
+  errorUpdate.email = undefined
+
   const output = await $session.update(account.data.email, account.data.username)
   if (output instanceof AccountPostInfosBadRequestImpl) {
     errorUpdate.username = output.username
