@@ -7,6 +7,6 @@ export const useQuizDataStore = defineStore({
         feelingData : undefined,
         emotionData : undefined,
         needData : undefined,
-        note : undefined,
+        comment : undefined,
     })
 })
