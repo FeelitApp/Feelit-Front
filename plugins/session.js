@@ -22,6 +22,9 @@ export default defineNuxtPlugin(() => {
     },
     async update(email, username) {
       return await api.account.update(email, username)
+    },
+    async delete() {
+      return await api.account.delete()
     }
   }
 

@@ -55,6 +55,12 @@ async function update() {
   isUpdated.value = true;
 }
 
+async function deleteAccount() {
+  const { $session } = useNuxtApp()
+  await $session.delete()
+  navigateTo({ name: 'index' });
+}
+
 onMounted(() => {
   if (!("geolocation" in navigator)) {
     errorStr.value = 'Geolocation pas disponible';
@@ -191,6 +197,7 @@ onMounted(() => {
           <Button
               :color="'#FF7B7B'"
               :content="'Supprimer mon compte'"
+              @click="deleteAccount"
           />
           <Button
               :color="'#CEBBFE'"
