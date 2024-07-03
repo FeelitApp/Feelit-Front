@@ -1,5 +1,6 @@
 <script setup>
 import ResultCard from "~/components/ResultCard.vue";
+import { useQuizDataStore } from "~/stores/quizData.js";
 
 definePageMeta({
   session: true,
@@ -17,16 +18,41 @@ useHead({
 });
 
 const currentStep = ref(1);
+const quizData = useQuizDataStore();
 
 function nextStep() {
+  if (currentStep.value === 1 && !quizData.sensationData) {
+    alert("Veuillez sélectionner une sensation avant de continuer.");
+    return;
+  }
+  if (currentStep.value === 2 && !quizData.emotionData) {
+    alert("Veuillez sélectionner une émotion avant de continuer.");
+    return;
+  }
+  if (currentStep.value === 3 && !quizData.needData) {
+    alert("Veuillez sélectionner un besoin avant de continuer.");
+    return;
+  }
   if (currentStep.value < 3) {
     currentStep.value += 1;
   }
 }
 
 function previousStep() {
-  currentStep.value -= 1;
+  if (currentStep.value > 1) {
+    currentStep.value -= 1;
+  }
 }
+
+function resetQuizData() {
+  quizData.sensationData = undefined;
+  quizData.emotionData = undefined;
+  quizData.needData = undefined;
+}
+
+onBeforeUnmount(() => {
+  resetQuizData();
+});
 </script>
 
 <template>

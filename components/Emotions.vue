@@ -44,6 +44,13 @@ function select(dataEmotion, dataFeeling) {
 
 fetchFeeling()
 fetchEmotion()
+
+onMounted(() => {
+  if (quizData.emotionData) {
+    openItems.value[quizData.feelingData.id] = true
+    selectedEmotion.value = quizData.emotionData.id
+  }
+})
 </script>
 
 <template>
