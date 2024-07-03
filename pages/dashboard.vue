@@ -13,6 +13,8 @@ useHead({
   ]
 });
 
+const router = useRouter()
+
 const sessionStore = useSessionStore()
 const account = sessionStore.account;
 
@@ -36,7 +38,7 @@ const meteoData = ref(null);
 async function logout() {
   const { $session } = useNuxtApp()
   await $session.logout();
-  navigateTo({ name: 'index' });
+  router.push('/')
 }
 
 async function update() {
@@ -58,7 +60,7 @@ async function update() {
 async function deleteAccount() {
   const { $session } = useNuxtApp()
   await $session.delete()
-  navigateTo({ name: 'index' });
+  router.push('/')
 }
 
 onMounted(() => {

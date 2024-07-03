@@ -24,7 +24,7 @@ export default defineNuxtPlugin(() => {
       return await api.account.update(email, username)
     },
     async delete() {
-      return await api.account.delete()
+      sessionStore.account =  await api.account.delete()
     }
   }
 
