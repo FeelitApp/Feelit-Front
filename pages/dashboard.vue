@@ -13,6 +13,8 @@ useHead({
   ]
 });
 
+const router = useRouter()
+
 const sessionStore = useSessionStore()
 const account = sessionStore.account;
 
@@ -36,7 +38,7 @@ const meteoData = ref(null);
 async function logout() {
   const { $session } = useNuxtApp()
   await $session.logout();
-  navigateTo({ name: 'index' });
+  router.push('/')
 }
 
 async function update() {
@@ -53,6 +55,12 @@ async function update() {
   }
   
   isUpdated.value = true;
+}
+
+async function deleteAccount() {
+  const { $session } = useNuxtApp()
+  await $session.delete()
+  router.push('/')
 }
 
 onMounted(() => {
@@ -191,6 +199,7 @@ onMounted(() => {
           <Button
               :color="'#FF7B7B'"
               :content="'Supprimer mon compte'"
+              @click="deleteAccount"
           />
           <Button
               :color="'#CEBBFE'"
