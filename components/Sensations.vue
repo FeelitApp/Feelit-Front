@@ -20,9 +20,10 @@ async function fetchSensation () {
 }
 
 fetchSensation()
+
 onMounted(() => {
-  if (quizData.sensationId) {
-    selectedSensation.value = quizData.sensationId
+  if (quizData.sensationData) {
+    selectedSensation.value = quizData.sensationData.id
   }
 })
 </script>
