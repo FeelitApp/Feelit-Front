@@ -1,6 +1,6 @@
 <script setup>
 import { AccountPostPasswordBadRequestImpl } from "~/api/endpoint/account_post_password"
-import Journal from "~/components/Journ"
+import Journal from "~/components/Journal"
 import { AccountPostInfosBadRequestImpl } from '../api/endpoint/account_post_infos'
 
 definePageMeta({colorMode: 'light'});

@@ -5,6 +5,8 @@ import 'v-calendar/style.css';
 
 const dataEntries = ref([]);
 const entriesDates = ref([]);
+const selectedDate = ref(null);
+const selectedEntries = ref([]);
 
 const attrs = ref([
   {
@@ -20,7 +22,6 @@ const attrs = ref([
 async function fetchEntries () {
   try {
     dataEntries.value = await api.data.getEntries();
-    console.log(dataEntries.value.map(entry => entry['created_at']));
     entriesDates.value = dataEntries.value.map(entry => new Date(entry['created_at']));
     attrs.value = [
       ...attrs.value.filter(attr => attr.key !== 'entries'),
@@ -34,6 +35,16 @@ async function fetchEntries () {
     console.log({e})
   }
 }
+
+function handleDayClick(day) {
+  selectedDate.value = day.date;
+  selectedEntries.value = dataEntries.value.filter(entry => {
+    const entryDate = new Date(entry.created_at).toDateString();
+    const selectedDay = new Date(day.date).toDateString();
+    return entryDate === selectedDay;
+  });
+}
+
 fetchEntries()
 </script>
 
@@ -48,6 +59,7 @@ fetchEntries()
           <VueCalendar
               borderless transparent expanded
               :attributes="attrs"
+              @dayclick="handleDayClick"
           />
         </div>
       </div>
@@ -62,9 +74,23 @@ fetchEntries()
           <p class="font-grotesk">Données enregistrées</p>
         </div>
         <div class="px-6 py-6 overflow-y-auto overflow-x-hidden">
-          <p class="font-grotesk">Sélectionnez une date dans le calendrier pour afficher les données enregistrées.</p>
-          <p class="font-grotesk">{{ dataEntries[0] }}</p>
+          <div
+              v-if="!selectedDate">
+            <p class="font-grotesk">Sélectionnez une date dans le calendrier pour afficher les données enregistrées.</p>
+          </div>
+          <div v-if="selectedEntries.length === 0 && selectedDate">
+            <p class="font-grotesk">Aucune entrée pour la date sélectionnée.</p>
+          </div>
+          <div v-else>
+            <div v-for="entry in selectedEntries" :key="entry.id" class="mb-4">
+              <p class="font-grotesk">Sensation: {{ entry.sensation.content }}</p>
+              <p class="font-grotesk">Emotion: {{ entry.emotion.content , entry.feeling.emoji }}</p>
+              <p v-if="entry.need.content" class="font-grotesk">Besoin: {{ entry.need.content }}</p>
+              <p v-if="entry.comment" class="font-grotesk">Comment: {{ entry.comment }}</p>
+            </div>
+          </div>
         </div>
+
       </div>
       <NuxtLink to="/quiz">
         <Button
