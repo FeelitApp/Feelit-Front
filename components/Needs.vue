@@ -58,10 +58,9 @@ watch(needs, (newNeeds) => {
 
   </div>
   <div
-    class="w-full my-6 font-grotesk">
+    class="w-full mt-4 mb-8 p-4 font-grotesk h-fit rounded-xl border-2 border-black cursor-pointer overflow-hidden shadow-[4px_4px_0_rgba(0,0,0,1)]">
     <div class="flex justify-between cursor-pointer" @click="isOpen = !isOpen">
       <div 
-        class="mb-4 text-lg whitespace-break-spaces"
       >
         Afficher la liste complète des besoins
       </div>
@@ -71,7 +70,7 @@ watch(needs, (newNeeds) => {
 
 
     <div v-if="isOpen">
-      <div class="gap-10 columns-1 sm:columns-2">
+      <div class="mt-4 sm:mt-8 mr-4 sm:mr-8 mb-0 sm:mb-0 ml-4 sm:ml-8 gap-4 sm:gap-8 columns-1 sm:columns-2">
         <div 
           class="h-fit rounded-xl border-2 border-black cursor-pointer overflow-hidden shadow-[4px_4px_0_rgba(0,0,0,1)] mb-10 flex-col"
           v-for="need in otherNeeds"
@@ -83,7 +82,7 @@ watch(needs, (newNeeds) => {
           >
             <img :src="need.picture"
                 class="border-b-2 border-b-black"/>
-            <p class="p-6 text-center font-grotesk">{{ need.content }}</p>
+            <p class="p-6 text-center text-sm font-grotesk">{{ need.content }}</p>
           </div>
         </div>
       </div>
