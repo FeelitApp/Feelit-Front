@@ -1,7 +1,7 @@
 <script setup>
+import { AccountPostPasswordBadRequestImpl } from "~/api/endpoint/account_post_password"
 import UserCalendar from "~/components/UserCalendar.vue"
 import { AccountPostInfosBadRequestImpl } from '../api/endpoint/account_post_infos'
-import {AccountPatchPasswordBadRequestImpl} from "~/api/endpoint/account_patch_password.ts";
 
 definePageMeta({colorMode: 'light'});
 useHead({
@@ -24,11 +24,12 @@ const errorUpdate = reactive({
   email: '',
   currentPassword: '',
   newPassword: '',
-  errors: ''
+  confirmNewPassword: ''
 })
 
 const currentPassword = ref('');
 const newPassword = ref('');
+const confirmNewPassword = ref('');
 
 const currentDate = new Date();
 const currDay = new Date().getDate();
@@ -69,12 +70,16 @@ async function updatePassword() {
   errorUpdate.currentPassword = undefined
   errorUpdate.newPassword = undefined
 
+  if (newPassword.value !== confirmNewPassword.value) {
+    errorUpdate.confirmNewPassword =
+      'Les mots de passe ne correspondent pas.';
+    return;
+  }
+
   const output = await $session.updatePassword(currentPassword.value, newPassword.value)
-  console.log(output)
-  if (output instanceof AccountPatchPasswordBadRequestImpl) {
+  if (output instanceof AccountPostPasswordBadRequestImpl) {
     errorUpdate.currentPassword = output.currentPassword
     errorUpdate.newPassword = output.newPassword
-    errorUpdate.errors = output.errors
     return
   }
 
@@ -219,11 +224,12 @@ onMounted(() => {
                     :type="'password'"
                     :name="'confirmPassword'"
                     :label="'Confirmer le mot de passe :'"
+                    v-model="confirmNewPassword"
                 />
                 <span class="text-green-400 font-grotesk" v-if="isUpdatedPassword">Mot de passe modifié.</span>
                 <span class="text-red-400 font-grotesk" v-if="errorUpdate.currentPassword">{{ errorUpdate.currentPassword.at(0) }}</span>
                 <span class="text-red-400 font-grotesk" v-if="errorUpdate.newPassword">{{ errorUpdate.newPassword.at(0) }}</span>
-              <span class="text-red-400 font-grotesk" v-if="errorUpdate.errors">{{ errorUpdate.errors }}</span>
+              <span class="text-red-400 font-grotesk" v-if="errorUpdate.confirmNewPassword">{{ errorUpdate.confirmNewPassword }}</span>
             </div>
             <div class="mx-auto">
               <Button
@@ -252,4 +258,4 @@ onMounted(() => {
       <Footer/>
     </Container>
   </div>
-</template>
+</template>~/api/endpoint/account_post_password

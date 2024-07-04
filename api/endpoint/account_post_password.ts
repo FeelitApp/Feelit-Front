@@ -1,20 +1,18 @@
 import { isBadRequest } from '~/api/utils'
-import {useRuntimeConfig} from "#app";
 
-export interface AccountPatchPasswordInput {
+export interface AccountPostPasswordInput {
     currentPassword: string,
     newPassword: string
 
     toFormData():Record<string, any>
 }
 
-export interface AccountPatchPasswordBadRequest {
+export interface AccountPostPasswordBadRequest {
     currentPassword?: string[],
-    newPassword?: string[],
-    code?: string
+    newPassword?: string[]
 }
 
-export class AccountPatchPasswordInputImpl implements AccountPatchPasswordInput {
+export class AccountPostPasswordInputImpl implements AccountPostPasswordInput {
     constructor(
         public readonly currentPassword: string,
         public readonly newPassword: string,
@@ -27,22 +25,20 @@ export class AccountPatchPasswordInputImpl implements AccountPatchPasswordInput 
     }
 }
 
-export class AccountPatchPasswordBadRequestImpl implements AccountPatchPasswordBadRequest {
+export class AccountPostPasswordBadRequestImpl implements AccountPostPasswordBadRequest {
     constructor(
         public readonly currentPassword?: string[],
-        public readonly newPassword?: string[],
-        public readonly code?: string
+        public readonly newPassword?: string[]
     ) {}
-    public static fromJson (data: AccountPatchPasswordBadRequest) {
-        return new AccountPatchPasswordBadRequestImpl(
+    public static fromJson (data: AccountPostPasswordBadRequest) {
+        return new AccountPostPasswordBadRequestImpl(
             data.currentPassword,
-            data.newPassword,
-            data.code
+            data.newPassword
         )
     }
 }
 
-export async function AccountPatchPasswordEndpoint (input: AccountPatchPasswordInput) {
+export async function AccountPostPasswordEndpoint (input: AccountPostPasswordInput) {
     try {
         await $fetch('users/me/password', {
             baseURL: useRuntimeConfig().public.apiBase,
@@ -53,9 +49,8 @@ export async function AccountPatchPasswordEndpoint (input: AccountPatchPasswordI
 
     } catch (e: any) {
         if (isBadRequest(e)) {
-            console.log(e.data)
-            const errors = e.data
-            return AccountPatchPasswordBadRequestImpl.fromJson(errors)
+            const errors = e.data.errors
+            return AccountPostPasswordBadRequestImpl.fromJson(errors)
         }
         throw e
     }
