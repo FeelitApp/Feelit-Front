@@ -74,22 +74,27 @@ fetchEntries()
           <p class="font-grotesk">Données enregistrées</p>
         </div>
         <div class="px-6 py-6 overflow-y-auto overflow-x-hidden">
-          <div
-              v-if="!selectedDate">
+          <div v-if="!selectedDate">
             <p class="font-grotesk">Sélectionnez une date dans le calendrier pour afficher les données enregistrées.</p>
           </div>
           <div v-if="selectedEntries.length === 0 && selectedDate">
             <p class="font-grotesk">Aucune entrée pour la date sélectionnée.</p>
           </div>
           <div v-else>
-            <div v-for="entry in selectedEntries" :key="entry.id" class="mb-4">
-              <p class="font-grotesk">Sensation: {{ entry.sensation.content }}</p>
-              <p class="font-grotesk">Emotion: {{ entry.emotion.content , entry.feeling.emoji }}</p>
-              <p v-if="entry.need.content" class="font-grotesk">Besoin: {{ entry.need.content }}</p>
-              <p v-if="entry.comment" class="font-grotesk">Comment: {{ entry.comment }}</p>
+            <div v-for="(entry, index) in selectedEntries" :key="entry.id" class="mb-4">
+              <p class="bg-purple text-white text-center mb-1 py-0.5 px-1 w-fit m-auto">ENTRÉE N°{{ index + 1 }}</p> <!-- Titre de l'entrée -->
+              <p class="font-grotesk font-bold">Sensation :</p>
+              <p class="font-grotesk">{{ entry.sensation.content }}</p>
+              <p class="font-grotesk font-bold">Émotion :</p>
+              <p class="font-grotesk">{{ entry.emotion.content + ' ' + entry.feeling.emoji }}</p>
+              <p class="font-grotesk font-bold">Besoin :</p>
+              <p v-if="entry.need.content" class="font-grotesk">{{ entry.need.content }}</p>
+              <p class="font-grotesk font-bold">Commentaire :</p>
+              <p v-if="entry.comment" class="font-grotesk">{{ entry.comment }}</p>
             </div>
           </div>
         </div>
+
 
       </div>
       <NuxtLink to="/quiz">
