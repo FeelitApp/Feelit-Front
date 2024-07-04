@@ -91,15 +91,11 @@ async function submitData () {
             </div>
 
             <div class="flex justify-between mb-4">
-              <NuxtLink
-                  to="/dashboard"
-                  class="mx-4">
-                <Button
-                    :color="'#93ECEE'"
-                    :content="'Retour'"
-                />
-              </NuxtLink>
-
+              <Button
+                  :color="'#93ECEE'"
+                  :content="'Retour'"
+                  @click="isOpen = false"
+              />
               <Button
                   @click="quizData.comment = comment ; submitData()"
                   :color="'#94ECEE'"
