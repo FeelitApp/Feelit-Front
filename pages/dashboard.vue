@@ -1,6 +1,5 @@
 <script setup>
 import { AccountPostPasswordBadRequestImpl } from "~/api/endpoint/account_post_password"
-import UserCalendar from "~/components/UserCalendar.vue"
 import Journal from "~/components/Journ"
 import { AccountPostInfosBadRequestImpl } from '../api/endpoint/account_post_infos'
 
