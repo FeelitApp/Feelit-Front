@@ -45,6 +45,24 @@ function handleDayClick(day) {
   });
 }
 
+function downloadFile(data, filename, type) {
+  const blob = new Blob([data], { type });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
+function downloadEntries() {
+  const data = dataEntries.value;
+  const jsonData = JSON.stringify(data, null, 2);
+  downloadFile(jsonData, 'data_entries.json', 'application/json');
+}
+
 fetchEntries()
 </script>
 
@@ -63,17 +81,20 @@ fetchEntries()
           />
         </div>
       </div>
-      <Button
-          :color="'#FFFFFF'"
-          :content="'Télécharger toutes les données'"
-      />
+      <div class="flex gap-4">
+        <Button
+            :color="'#FFFFFF'"
+            :content="'Télécharger toutes les données'"
+            @click="() => downloadEntries()"
+        />
+      </div>
     </div>
     <div class="flex flex-col items-center gap-8 sm:w-[45%]">
       <div class="rounded-xl border-2 border-black overflow-hidden shadow-[4px_4px_0_rgba(0,0,0,1)] flex flex-col h-80 w-full">
         <div class="w-full px-4 py-2 mt-0 border-b-2 border-black bg-purple">
           <p class="font-grotesk">Données enregistrées</p>
         </div>
-        <div class="px-6 py-6 overflow-y-auto overflow-x-hidden">
+        <div class="px-6 py-6 overflow-x-hidden overflow-y-auto">
           <div v-if="!selectedDate">
             <p class="font-grotesk">Sélectionnez une date dans le calendrier pour afficher les données enregistrées.</p>
           </div>
@@ -83,19 +104,17 @@ fetchEntries()
           <div v-else>
             <div v-for="(entry, index) in selectedEntries" :key="entry.id" class="mb-4">
               <p class="bg-purple text-white text-center mb-1 py-0.5 px-1 w-fit m-auto">ENTRÉE N°{{ index + 1 }}</p> <!-- Titre de l'entrée -->
-              <p class="font-grotesk font-bold">Sensation :</p>
+              <p class="font-bold font-grotesk">Sensation :</p>
               <p class="font-grotesk">{{ entry.sensation.content }}</p>
-              <p class="font-grotesk font-bold">Émotion :</p>
+              <p class="font-bold font-grotesk">Émotion :</p>
               <p class="font-grotesk">{{ entry.emotion.content + ' ' + entry.feeling.emoji }}</p>
-              <p class="font-grotesk font-bold">Besoin :</p>
+              <p class="font-bold font-grotesk">Besoin :</p>
               <p v-if="entry.need.content" class="font-grotesk">{{ entry.need.content }}</p>
-              <p class="font-grotesk font-bold">Commentaire :</p>
+              <p class="font-bold font-grotesk">Commentaire :</p>
               <p v-if="entry.comment" class="font-grotesk">{{ entry.comment }}</p>
             </div>
           </div>
         </div>
-
-
       </div>
       <NuxtLink to="/quiz">
         <Button
