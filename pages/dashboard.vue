@@ -1,6 +1,7 @@
 <script setup>
 import UserCalendar from "~/components/UserCalendar.vue"
 import { AccountPostInfosBadRequestImpl } from '../api/endpoint/account_post_infos'
+import {AccountPatchPasswordBadRequestImpl} from "~/api/endpoint/account_patch_password.ts";
 
 definePageMeta({colorMode: 'light'});
 useHead({
@@ -17,10 +18,17 @@ const sessionStore = useSessionStore()
 const account = sessionStore.account;
 
 const isUpdated = ref(false);
+const isUpdatedPassword = ref(false);
 const errorUpdate = reactive({
   username: '',
-  email: ''
+  email: '',
+  currentPassword: '',
+  newPassword: '',
+  errors: ''
 })
+
+const currentPassword = ref('');
+const newPassword = ref('');
 
 const currentDate = new Date();
 const currDay = new Date().getDate();
@@ -53,6 +61,24 @@ async function update() {
   }
   
   isUpdated.value = true;
+}
+
+async function updatePassword() {
+  const { $session } = useNuxtApp()
+
+  errorUpdate.currentPassword = undefined
+  errorUpdate.newPassword = undefined
+
+  const output = await $session.updatePassword(currentPassword.value, newPassword.value)
+  console.log(output)
+  if (output instanceof AccountPatchPasswordBadRequestImpl) {
+    errorUpdate.currentPassword = output.currentPassword
+    errorUpdate.newPassword = output.newPassword
+    errorUpdate.errors = output.errors
+    return
+  }
+
+  isUpdatedPassword.value = true;
 }
 
 onMounted(() => {
@@ -179,28 +205,32 @@ onMounted(() => {
                       :type="'password'"
                       :name="'currentPassword'"
                       :label="'Mot de passe actuel :'"
-                  />
+                      v-model="currentPassword"
+
+              />
             <div class="flex flex-col gap-2 sm:grid sm:grid-cols-2 sm:gap-8">
               <Input
                     :type="'password'"
                     :name="'newPassword'"
                     :label="'Nouveau mot de passe :'"
-                />
+                    v-model="newPassword"
+              />
                 <Input
                     :type="'password'"
                     :name="'confirmPassword'"
                     :label="'Confirmer le mot de passe :'"
                 />
-                <span class="text-green-400 font-grotesk" v-if="isUpdated">Mot de passe modifié.</span>
-                <span class="text-red-400 font-grotesk" v-if="errorUpdate.username">{{ errorUpdate.username.at(0) }}</span>
-                <span class="text-red-400 font-grotesk" v-if="errorUpdate.email">{{ errorUpdate.email.at(0) }}</span>
+                <span class="text-green-400 font-grotesk" v-if="isUpdatedPassword">Mot de passe modifié.</span>
+                <span class="text-red-400 font-grotesk" v-if="errorUpdate.currentPassword">{{ errorUpdate.currentPassword.at(0) }}</span>
+                <span class="text-red-400 font-grotesk" v-if="errorUpdate.newPassword">{{ errorUpdate.newPassword.at(0) }}</span>
+              <span class="text-red-400 font-grotesk" v-if="errorUpdate.errors">{{ errorUpdate.errors }}</span>
             </div>
             <div class="mx-auto">
               <Button
                   class="text-md"
                   :color="'#FFFFFF'"
                   :content="'Modifier le mot de passe'"
-                  @click="update"
+                  @click="updatePassword"
               />
             </div>
             </div>

@@ -1,3 +1,4 @@
+import { AccountPatchPasswordEndpoint, AccountPatchPasswordInputImpl } from "~/api/endpoint/account_patch_password";
 import { AccountPatchInfosEndpoint, AccountPostInfosInputImpl } from './endpoint/account_post_infos'
 import { AuthPostLoginEndpoint, AuthPostLoginInputImpl } from './endpoint/auth_post_login'
 import { AuthPostRegisterEndpoint, AuthPostRegisterInputImpl } from './endpoint/auth_post_register'
@@ -16,7 +17,8 @@ export const api = {
     register: proxifyEndpointInput(AuthPostRegisterEndpoint, AuthPostRegisterInputImpl)
   },
   account: {
-    update: proxifyEndpointInput(AccountPatchInfosEndpoint, AccountPostInfosInputImpl)
+    update: proxifyEndpointInput(AccountPatchInfosEndpoint, AccountPostInfosInputImpl),
+    updatePassword: proxifyEndpointInput(AccountPatchPasswordEndpoint, AccountPatchPasswordInputImpl)
   },
   data: {
     getFeeling: DataGetFeelingEndpoint,
