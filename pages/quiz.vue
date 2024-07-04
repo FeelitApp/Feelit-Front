@@ -29,10 +29,6 @@ function nextStep() {
     alert("Veuillez sélectionner une émotion avant de continuer.");
     return;
   }
-  if (currentStep.value === 3 && !quizData.needData) {
-    alert("Veuillez sélectionner un besoin avant de continuer.");
-    return;
-  }
   if (currentStep.value < 3) {
     currentStep.value += 1;
   }
