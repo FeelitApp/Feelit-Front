@@ -1,0 +1,25 @@
+name: Run Tests
+
+on:
+  pull_request:
+    branches:
+      - main  # ou la branche par défaut de votre projet
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '16'  # ou la version de Node.js que votre projet utilise
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Run tests
+      run: npm run test
