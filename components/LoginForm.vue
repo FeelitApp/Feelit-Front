@@ -69,11 +69,11 @@ async function submitLogin () {
 
     <div class="flex flex-row justify-between h-12">
 
-      <button @click="activeTab = 'Connexion'" v-bind:class="activeTab != 'Connexion' ? 'rounded-br-xl border-r-2 border-b-2 border-black bg-purple opacity-30 font-semibold' : 'font-bold text-purple'" class="w-1/2 font-grotesk">
+      <button @click="activeTab = 'Connexion'" v-bind:class="activeTab != 'Connexion' ? 'rounded-br-xl border-r-2 border-b-2 border-black bg-light-pink font-semibold' : 'font-bold'" class="w-1/2 font-grotesk">
         Connexion
       </button>
 
-      <button @click="activeTab = 'Inscription'" v-bind:class="activeTab != 'Inscription' ? 'rounded-bl-xl border-l-2 border-b-2 border-black bg-purple opacity-30 font-semibold' : 'font-bold text-purple'" class="w-1/2 font-grotesk">
+      <button @click="activeTab = 'Inscription'" v-bind:class="activeTab != 'Inscription' ? 'rounded-bl-xl border-l-2 border-b-2 border-black bg-light-pink font-semibold' : 'font-bold'" class="w-1/2 font-grotesk">
         Inscription
       </button>
 
