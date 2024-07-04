@@ -3,21 +3,21 @@ import { type Feeling } from './feeling_dto';
 export interface Sensation {
   id: number;
   content: string;
-  feeling: Feeling;
+  feeling?: Feeling;
 }
 
 export class SensationDto implements Sensation {
   constructor (
     readonly id: number,
     readonly content: string,
-    readonly feeling: Feeling,
+    readonly feeling?: Feeling,
   ) {}
 
   public static fromJson (data: Sensation): SensationDto {
     return new SensationDto(
       data.id,
       data.content,
-      data.feeling,
+      data?.feeling,
     )
   }
 

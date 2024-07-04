@@ -1,6 +1,6 @@
 <script setup>
 import { AccountPostPasswordBadRequestImpl } from "~/api/endpoint/account_post_password"
-import UserCalendar from "~/components/UserCalendar.vue"
+import Journal from "~/components/Journal"
 import { AccountPostInfosBadRequestImpl } from '../api/endpoint/account_post_infos'
 
 definePageMeta({colorMode: 'light'});
@@ -87,7 +87,7 @@ async function updatePassword() {
 
   isUpdatedPassword.value = true;
 }
- 
+
 async function deleteAccount() {
   const { $session } = useNuxtApp()
   await $session.delete()
@@ -150,39 +150,7 @@ onMounted(() => {
           </div>
         </div>
 
-        <div class="flex flex-col gap-10 sm:flex sm:flex-row sm:justify-between">
-          <div class="flex flex-col items-center gap-8 sm:w-[50%]">
-            <div class="rounded-xl border-2 border-black overflow-hidden shadow-[4px_4px_0_rgba(0,0,0,1)] flex flex-col h-80 w-full">
-              <div class="w-full px-4 py-2 mt-0 border-b-2 border-black bg-pink">
-                <p class="font-grotesk">Calendrier</p>
-              </div>
-              <div class="px-4 py-2">
-                <UserCalendar />
-              </div>
-            </div>
-            <Button
-                :color="'#FFFFFF'"
-                :content="'Télécharger toutes les données'"
-            />
-          </div>
-          <div class="flex flex-col items-center gap-8 sm:w-[45%]">
-            <div class="rounded-xl border-2 border-black overflow-hidden shadow-[4px_4px_0_rgba(0,0,0,1)] flex flex-col h-80 w-full">
-              <div class="w-full px-4 py-2 mt-0 border-b-2 border-black bg-purple">
-                <p class="font-grotesk">Données enregistrées</p>
-              </div>
-              <div class="px-6 py-6">
-                <p class="font-grotesk">Sélectionnez une date dans le calendrier pour afficher les données enregistrées.</p>
-              </div>
-            </div>
-            <NuxtLink to="/quiz">
-              <Button
-                  :bold="true"
-                  :color="'#93ECEE'"
-                  :content="'Lancer le questionnaire'"
-              />
-            </NuxtLink>
-          </div>
-        </div>
+        <Journal />
 
         <div class="rounded-xl border-2 border-black overflow-hidden shadow-[4px_4px_0_rgba(0,0,0,1)] flex flex-col w-full">
           <div class="w-full px-4 py-2 mt-0 border-b-2 border-black bg-lime">
@@ -223,20 +191,20 @@ onMounted(() => {
               />
             <div class="flex flex-col gap-2 sm:grid sm:grid-cols-2 sm:gap-8">
               <Input
-                    :type="'password'"
-                    :name="'newPassword'"
-                    :label="'Nouveau mot de passe :'"
-                    v-model="newPassword"
+                  :type="'password'"
+                  :name="'newPassword'"
+                  :label="'Nouveau mot de passe :'"
+                  v-model="newPassword"
               />
-                <Input
-                    :type="'password'"
-                    :name="'confirmPassword'"
-                    :label="'Confirmer le mot de passe :'"
-                    v-model="confirmNewPassword"
-                />
-                <span class="text-green-400 font-grotesk" v-if="isUpdatedPassword">Mot de passe modifié.</span>
-                <span class="text-red-400 font-grotesk" v-if="errorUpdate.currentPassword">{{ errorUpdate.currentPassword.at(0) }}</span>
-                <span class="text-red-400 font-grotesk" v-if="errorUpdate.newPassword">{{ errorUpdate.newPassword.at(0) }}</span>
+              <Input
+                  :type="'password'"
+                  :name="'confirmPassword'"
+                  :label="'Confirmer le mot de passe :'"
+                  v-model="confirmNewPassword"
+              />
+              <span class="text-green-400 font-grotesk" v-if="isUpdatedPassword">Mot de passe modifié.</span>
+              <span class="text-red-400 font-grotesk" v-if="errorUpdate.currentPassword">{{ errorUpdate.currentPassword.at(0) }}</span>
+              <span class="text-red-400 font-grotesk" v-if="errorUpdate.newPassword">{{ errorUpdate.newPassword.at(0) }}</span>
               <span class="text-red-400 font-grotesk" v-if="errorUpdate.confirmNewPassword">{{ errorUpdate.confirmNewPassword }}</span>
             </div>
             <div class="mx-auto">
@@ -247,7 +215,7 @@ onMounted(() => {
                   @click="updatePassword"
               />
             </div>
-            </div>
+          </div>
         </div>
 
         <div class="flex flex-col items-center gap-6 sm:flex-row sm:justify-center sm:gap-12">
