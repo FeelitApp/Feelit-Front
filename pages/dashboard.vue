@@ -1,6 +1,7 @@
 <script setup>
 import { AccountPostPasswordBadRequestImpl } from "~/api/endpoint/account_post_password"
 import UserCalendar from "~/components/UserCalendar.vue"
+import Journal from "~/components/Journ"
 import { AccountPostInfosBadRequestImpl } from '../api/endpoint/account_post_infos'
 
 definePageMeta({colorMode: 'light'});
@@ -87,7 +88,7 @@ async function updatePassword() {
 
   isUpdatedPassword.value = true;
 }
- 
+
 async function deleteAccount() {
   const { $session } = useNuxtApp()
   await $session.delete()
@@ -223,20 +224,20 @@ onMounted(() => {
               />
             <div class="flex flex-col gap-2 sm:grid sm:grid-cols-2 sm:gap-8">
               <Input
-                    :type="'password'"
-                    :name="'newPassword'"
-                    :label="'Nouveau mot de passe :'"
-                    v-model="newPassword"
+                  :type="'password'"
+                  :name="'newPassword'"
+                  :label="'Nouveau mot de passe :'"
+                  v-model="newPassword"
               />
-                <Input
-                    :type="'password'"
-                    :name="'confirmPassword'"
-                    :label="'Confirmer le mot de passe :'"
-                    v-model="confirmNewPassword"
-                />
-                <span class="text-green-400 font-grotesk" v-if="isUpdatedPassword">Mot de passe modifié.</span>
-                <span class="text-red-400 font-grotesk" v-if="errorUpdate.currentPassword">{{ errorUpdate.currentPassword.at(0) }}</span>
-                <span class="text-red-400 font-grotesk" v-if="errorUpdate.newPassword">{{ errorUpdate.newPassword.at(0) }}</span>
+              <Input
+                  :type="'password'"
+                  :name="'confirmPassword'"
+                  :label="'Confirmer le mot de passe :'"
+                  v-model="confirmNewPassword"
+              />
+              <span class="text-green-400 font-grotesk" v-if="isUpdatedPassword">Mot de passe modifié.</span>
+              <span class="text-red-400 font-grotesk" v-if="errorUpdate.currentPassword">{{ errorUpdate.currentPassword.at(0) }}</span>
+              <span class="text-red-400 font-grotesk" v-if="errorUpdate.newPassword">{{ errorUpdate.newPassword.at(0) }}</span>
               <span class="text-red-400 font-grotesk" v-if="errorUpdate.confirmNewPassword">{{ errorUpdate.confirmNewPassword }}</span>
             </div>
             <div class="mx-auto">
@@ -247,7 +248,7 @@ onMounted(() => {
                   @click="updatePassword"
               />
             </div>
-            </div>
+          </div>
         </div>
 
         <div class="flex flex-col items-center gap-6 sm:flex-row sm:justify-center sm:gap-12">

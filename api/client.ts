@@ -1,4 +1,4 @@
-import { AccountPostPasswordEndpoint, AccountPostPasswordInputImpl } from "~/api/endpoint/account_post_password"
+import { AccountPatchPasswordEndpoint, AccountPatchPasswordInputImpl } from "~/api/endpoint/account_patch_password";
 import { AccountPatchInfosEndpoint, AccountPostInfosInputImpl } from './endpoint/account_post_infos'
 import { AuthPostLoginEndpoint, AuthPostLoginInputImpl } from './endpoint/auth_post_login'
 import { AuthPostRegisterEndpoint, AuthPostRegisterInputImpl } from './endpoint/auth_post_register'
@@ -10,7 +10,6 @@ import { DataPostEntryEndpoint, DataPostEntryInputImpl } from './endpoint/data_p
 import { AccountDeleteInfosEndpoint } from './endpoint/account_delete_infos'
 
 
-
 import { proxifyEndpointInput } from './utils'
 
 export const api = {
@@ -19,9 +18,9 @@ export const api = {
     register: proxifyEndpointInput(AuthPostRegisterEndpoint, AuthPostRegisterInputImpl),
   },
   account: {
+    delete: AccountDeleteInfosEndpoint,
     update: proxifyEndpointInput(AccountPatchInfosEndpoint, AccountPostInfosInputImpl),
-    updatePassword: proxifyEndpointInput(AccountPostPasswordEndpoint, AccountPostPasswordInputImpl),
-    delete: AccountDeleteInfosEndpoint
+    updatePassword: proxifyEndpointInput(AccountPatchPasswordEndpoint, AccountPatchPasswordInputImpl)
   },
   data: {
     getFeeling: DataGetFeelingEndpoint,
