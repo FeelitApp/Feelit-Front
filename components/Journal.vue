@@ -85,7 +85,7 @@ fetchEntries()
         <Button
             :color="'#FFFFFF'"
             :content="'Télécharger toutes les données'"
-            @click="() => downloadEntries()"
+            @click="downloadEntries"
         />
       </div>
     </div>
