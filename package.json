@@ -7,16 +7,26 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "coverage": "vitest run --coverage"
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",
     "@nuxtjs/google-fonts": "^3.0.2",
     "@nuxtjs/tailwindcss": "^6.9.4",
     "@pinia/nuxt": "^0.5.1",
+    "@types/node": "^20.14.9",
+    "@vitejs/plugin-vue": "^5.0.5",
+    "@vitest/coverage-v8": "^1.6.0",
+    "@vue/test-utils": "^2.4.6",
     "autoprefixer": "^10.4.16",
+    "c8": "^10.1.2",
+    "jsdom": "^24.1.0",
     "nuxt": "^3.8.0",
     "postcss": "^8.4.31",
+    "vitest": "^1.6.0",
     "vue": "^3.3.7",
     "vue-router": "^4.2.5"
   },
