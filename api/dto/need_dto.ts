@@ -4,7 +4,7 @@ export interface Need {
   id: number;
   content: string;
   picture: string;
-  feeling: Feeling;
+  feeling?: Feeling;
 }
 
 export class NeedDto implements Need {
@@ -12,7 +12,7 @@ export class NeedDto implements Need {
     readonly id: number,
     readonly content: string,
     readonly picture: string,
-    readonly feeling: Feeling,
+    readonly feeling?: Feeling,
   ) {}
 
   public static fromJson (data: Need): NeedDto {
@@ -20,7 +20,7 @@ export class NeedDto implements Need {
       data.id,
       data.content,
       data.picture,
-      data.feeling,
+      data?.feeling,
     )
   }
 

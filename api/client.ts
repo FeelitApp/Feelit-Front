@@ -6,6 +6,7 @@ import { DataGetEmotionEndpoint } from './endpoint/data_get_emotion'
 import { DataGetFeelingEndpoint } from './endpoint/data_get_feeling'
 import { DataGetNeedEndpoint } from './endpoint/data_get_need'
 import { DataGetSensationEndpoint } from './endpoint/data_get_sensation'
+import { DataGetEntriesEndpoint } from './endpoint/data_get_entries'
 import { DataPostEntryEndpoint, DataPostEntryInputImpl } from './endpoint/data_post_entry'
 import { AccountDeleteInfosEndpoint } from './endpoint/account_delete_infos'
 
@@ -27,6 +28,7 @@ export const api = {
     getEmotion: DataGetEmotionEndpoint,
     getSensation: DataGetSensationEndpoint,
     getNeed: DataGetNeedEndpoint,
+    getEntries: DataGetEntriesEndpoint,
     postEntry: proxifyEndpointInput(DataPostEntryEndpoint, DataPostEntryInputImpl),
   }
 }

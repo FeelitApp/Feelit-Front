@@ -8,11 +8,21 @@ const attrs = ref([
     dot: true,
     dates: new Date(),
   },
+  {
+    key: 'entries',
+    highlight: 'green',
+    dates: [
+        new Date(2024, 6, 2)
+    ],
+  },
 ]);
 </script>
 
 <template>
-  <VueCalendar borderless transparent expanded :attributes="attrs"/>
+  <VueCalendar
+      borderless transparent expanded
+      :attributes="attrs"
+  />
 </template>
 
 
