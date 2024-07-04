@@ -86,7 +86,7 @@ async function updatePassword() {
   }
 
   isUpdatedPassword.value = true;
- }
+}
  
 async function deleteAccount() {
   const { $session } = useNuxtApp()
