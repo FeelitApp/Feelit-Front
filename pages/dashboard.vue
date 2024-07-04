@@ -267,4 +267,4 @@ onMounted(() => {
       <Footer/>
     </Container>
   </div>
-</template>~/api/endpoint/account_post_password
+</template>
