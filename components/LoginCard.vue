@@ -28,7 +28,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <div v-if="shouldShow" class="hidden lg:block loginCard w-44 rounded-xl border-2 border-black shadow-[4px_4px_0_rgba(0,0,0,1)] p-4 bg-blue absolute top-44"
+    <div v-if="shouldShow" class="hidden lg:block loginCard w-50 rounded-xl border-2 border-black shadow-[4px_4px_0_rgba(0,0,0,1)] p-4 bg-blue absolute top-44"
          :style="{ left: leftMargePx }">
       <button
         v-if="!sessionStore.account"
@@ -47,7 +47,7 @@ onMounted(() => {
         class="flex flex-row items-center px-3 py-2 bg-white border-2 border-black rounded-3xl"
       >
         <img src="/account_2.svg" alt="Icône connexion" class="h-6 mr-2">
-        <span class="font-bold text-md font-grotesk">Dashboard</span>
+        <span class="font-bold text-md font-grotesk">Mon espace</span>
       </NuxtLink>
     </div>
 
