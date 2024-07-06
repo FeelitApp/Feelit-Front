@@ -2,6 +2,8 @@ services:
   nuxt-app:
     build: .
     ports:
+    env_file:
+      - .env
       - "80:3000"
     environment:
       - HOST=0.0.0.0
