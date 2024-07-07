@@ -131,9 +131,6 @@ async function submitLogin () {
               v-model="registerData.email"
               required
           />
-          <span v-if="errors.email">
-              {{ errors.email.at(0) }}
-            </span>
         </div>
         <Input
             type="password"
@@ -143,6 +140,9 @@ async function submitLogin () {
             v-model="registerData.password"
         />
         <div class="relative w-full">
+          <span v-if="errors.email" class="text-sm font-grotesk font-bold text-[#FF7B7B]">
+              L'adresse e-mail est déjà utilisée.
+            </span>
           <span v-if="errors.password" class="text-sm font-grotesk font-bold text-[#FF7B7B]">
               {{ errors.password }}
             </span>
