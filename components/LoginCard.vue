@@ -78,7 +78,7 @@ onMounted(() => {
           rounded: 'rounded-xl',
           shadow: 'shadow-[4px_4px_0_rgba(0,0,0,1)]',
           base: 'border-black border-2',
-          container: 'flex items-center'
+          container: 'flex items-center',
         }"
   >
     <LoginForm />

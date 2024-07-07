@@ -70,7 +70,7 @@ async function submitData () {
           container: 'flex items-center'
         }"
       >
-        <div class="flex flex-col px-8 py-6 bg-light-pink">
+        <div class="flex flex-col px-8 py-6 bg-light-pink rounded-xl">
           <h1 class="mb-4 text-xl font-bold text-center font-grotesk">Récapitulatif</h1>
           <p class="font-grotesk"><strong>Sensation :</strong><br/>{{ quizData.sensationData.content }}</p>
           <p class="font-grotesk"><strong>Émotion :</strong> {{ quizData.emotionData.content + ' ' + quizData.feelingData.emoji }}</p>

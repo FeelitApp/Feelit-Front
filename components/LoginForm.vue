@@ -72,7 +72,7 @@ function clearErrors () {
 </script>
 
 <template>
-  <div class="w-full m-auto overflow-hidden bg-white">
+  <div class="w-full m-auto overflow-hidden bg-white rounded-xl">
 
     <div class="flex flex-row justify-between h-12">
 
