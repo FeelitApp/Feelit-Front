@@ -10,7 +10,7 @@ export default defineNuxtConfig({
     ],
     runtimeConfig: {
         public: {
-          apiBase: process.env.API_BASE || 'http://162.19.228.51/api'
+          apiBase: process.env.API_BASE
         }
       },
 })
