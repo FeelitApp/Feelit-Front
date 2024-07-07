@@ -62,7 +62,7 @@ const object = ref('');
 const message = ref('');
 
 const sendMessage = async () => {
-  await $fetch('/contact/send-email', {
+  await $fetch('api/contact/send-email', {
     method: 'POST',
     body: JSON.stringify({
       name: name.value,
