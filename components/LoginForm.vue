@@ -62,6 +62,13 @@ async function submitLogin () {
   if (props.from === 'Start') router.push('/quiz');
   else router.push('/dashboard');
 };
+
+function clearErrors () {
+  errors.value.email = '';
+  errors.value.username = '';
+  errors.value.password = '';
+  errors.value.code = '';
+}
 </script>
 
 <template>
@@ -69,11 +76,11 @@ async function submitLogin () {
 
     <div class="flex flex-row justify-between h-12">
 
-      <button @click="activeTab = 'Connexion'" v-bind:class="activeTab != 'Connexion' ? 'rounded-br-xl border-r-2 border-b-2 border-black bg-light-pink font-semibold' : 'font-bold'" class="w-1/2 font-grotesk">
+      <button @click="activeTab = 'Connexion'; clearErrors()" v-bind:class="activeTab != 'Connexion' ? 'rounded-br-xl border-r-2 border-b-2 border-black bg-light-pink font-semibold' : 'font-bold'" class="w-1/2 font-grotesk">
         Connexion
       </button>
 
-      <button @click="activeTab = 'Inscription'" v-bind:class="activeTab != 'Inscription' ? 'rounded-bl-xl border-l-2 border-b-2 border-black bg-light-pink font-semibold' : 'font-bold'" class="w-1/2 font-grotesk">
+      <button @click="activeTab = 'Inscription'; clearErrors()" v-bind:class="activeTab != 'Inscription' ? 'rounded-bl-xl border-l-2 border-b-2 border-black bg-light-pink font-semibold' : 'font-bold'" class="w-1/2 font-grotesk">
         Inscription
       </button>
 
