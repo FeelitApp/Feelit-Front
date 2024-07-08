@@ -108,7 +108,7 @@ onMounted(() => {
     gettingLocation.value = false;
     location.value = pos;
 
-    const url = `http://api.weatherapi.com/v1/current.json?key=49043bfb42f6476388b134930231512&q=${pos.coords.latitude},${pos.coords.longitude}&aqi=no`;
+    const url = `https://api.weatherapi.com/v1/current.json?key=49043bfb42f6476388b134930231512&q=${pos.coords.latitude},${pos.coords.longitude}&aqi=no`;
 
     const data = await $fetch(url);
     data.current.temp_c = Math.round(data.current.temp_c);
