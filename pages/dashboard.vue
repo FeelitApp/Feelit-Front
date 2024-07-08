@@ -89,9 +89,11 @@ async function updatePassword() {
 }
 
 async function deleteAccount() {
-  const { $session } = useNuxtApp()
-  await $session.delete()
-  router.push('/')
+  if (confirm('Êtes-vous sûr de vouloir supprimer votre compte ?')) {
+    const { $session } = useNuxtApp()
+    await $session.delete()
+    router.push('/')
+  }
 }
 
 onMounted(() => {
