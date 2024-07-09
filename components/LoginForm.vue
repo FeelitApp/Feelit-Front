@@ -89,6 +89,9 @@ function clearErrors () {
     <div class="px-10 pt-10 pb-4">
 
       <form @submit.prevent="submitLogin" v-if="activeTab === 'Connexion'" class="flex flex-col items-center gap-y-6">
+        <p class="text-sm font-grotesk">
+          C'est un plaisir de vous revoir ! Connectez-vous pour accéder à votre espace.
+        </p>
         <Input
             type="email"
             name="emailLogin"
@@ -122,6 +125,9 @@ function clearErrors () {
         </div>
       </form>
       <form @submit.prevent="submitRegister" v-else class="flex flex-col items-center gap-y-6">
+        <p class="text-sm font-grotesk">
+          Bienvenue sur Feelit ! Vous inscrire vous permet d'accéder à votre espace, où vos réponses au questionnaire sont enregistrées. Vous pouvez ainsi suivre vos tendances émotionnelles personnelles.
+        </p>
         <Input
             type="username"
             name="username"

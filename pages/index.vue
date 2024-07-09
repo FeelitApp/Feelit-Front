@@ -25,10 +25,14 @@ const sessionStore = useSessionStore()
 
         <div class="flex flex-col gap-4 font-grotesk text-md lg:text-lg lg:leading-normal">
           <p>
-            Inspiré de la Roue des Émotions, développée par le psychologue américain  Robert Plutchik en 1980, <strong>feelit</strong> a pour objectif de vous accompagner dans l’identification de vos émotions, afin que vous puissiez les nommer et vous les approprier.
+            Inspiré de la Roue des Émotions développée par le psychologue américain  Robert Plutchik en 1980, <strong>feelit</strong> a pour objectif de vous accompagner dans l’identification de vos émotions, afin que vous puissiez les nommer et vous les approprier.
           </p>
           <p>
-            Identifier nos émotions nous permet de les accueillir plus sereinement, de dépasser les blocages et d’en faire nos alliées pour avancer.
+            Prenez 5 minutes pour explorer vos sensations physiques et votre état émotionnel.
+            En effectuant notre test régulièrement, vous deviendrez à même de reconnaître vos émotions et d'identifier les besoins psychologiques qu'elles impliquent.
+          </p>
+          <p>
+            Faites de vos émotions vos alliées !
           </p>
         </div>
 
@@ -67,7 +71,8 @@ const sessionStore = useSessionStore()
           </div>
           <Card
               :color="'#FFFFF'"
-              :content="'En répondant aux différentes questions posées, identifiez vos émotions et accédez à des exemples de besoins associés.'"
+              :content="'En répondant aux différentes questions posées, vous allez apprendre à reconnaître vos émotions et à identifier ce dont vous avez vraiment besoin. ' +
+               'Quand vous vous sentez prêt, cliquez sur le bouton pour lancer le questionnaire !'"
               :button="true"
           >
             <NuxtLink 

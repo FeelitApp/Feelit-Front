@@ -108,10 +108,10 @@ fetchEntries()
               <p class="font-grotesk">{{ entry.sensation.content }}</p>
               <p class="font-bold font-grotesk">Émotion :</p>
               <p class="font-grotesk">{{ entry.emotion.content + ' ' + entry.feeling.emoji }}</p>
-              <p class="font-bold font-grotesk">Besoin :</p>
-              <p v-if="entry.need.content" class="font-grotesk">{{ entry.need.content }}</p>
-              <p class="font-bold font-grotesk">Commentaire :</p>
-              <p v-if="entry.comment" class="font-grotesk">{{ entry.comment }}</p>
+              <p v-if="entry.need.content" class="font-bold font-grotesk">Besoin :</p>
+              <p class="font-grotesk">{{ entry.need.content }}</p>
+              <p v-if="entry.comment" class="font-bold font-grotesk">Commentaire :</p>
+              <p class="font-grotesk">{{ entry.comment }}</p>
             </div>
           </div>
         </div>

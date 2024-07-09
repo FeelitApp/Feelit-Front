@@ -58,6 +58,10 @@ onMounted(() => {
     <h2 class="mx-auto mb-8 text-3xl font-semibold text-center font-grotesk">
       Quelle émotion correspond<br/>le mieux à votre état ?
     </h2>
+    <p class="mx-auto mb-8 text-center font-grotesk">
+      Votre état physique suggère une association à une émotion principale, que Feelit met en avant parmi les propositions ci-dessous.
+      Chacune d'entre elles comporte une liste d'émotions dites complexes. Quelle est celle qui vous parle le plus ? Cliquez pour dérouler la liste des choix possibles.
+    </p>
 
     <div class="flex flex-col">
       <div 
