@@ -42,6 +42,11 @@ yarn dev
 bun run dev
 ```
 
+## Screenshots
+
+![Homepage](https://imgur.com/q9xWlc6)
+![Dashboard](https://imgur.com/LpraT56)
+
 
 ## Running Tests
 
