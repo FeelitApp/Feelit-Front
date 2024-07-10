@@ -44,5 +44,5 @@ export default defineEventHandler(async (event) => {
 
   await mailerSend.email.send(emailParams);
 
-  return body
+  return new Response(null, { status: 302, headers: { Location: "/contact" } });
 })
