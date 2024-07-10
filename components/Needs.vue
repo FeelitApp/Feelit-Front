@@ -39,8 +39,11 @@ watch(needs, (newNeeds) => {
 
 
 <template>
-  <h2 class="mx-auto mb-8 text-3xl font-semibold font-grotesk">
+  <h2 class="mx-auto mb-2 text-3xl font-semibold font-grotesk">
     Les besoins </h2>
+  <p class="mx-auto mb-8 text-center font-grotesk">
+    Afin d'accueillir sereinement votre émotion, il est utile de comprendre ce qu'elle traduit comme besoin psychologique. Feelit vous en suggère quelques-uns afin de vous guider dans votre connaissance de vous-même. Sélectionnez-en un qui se rapproche de votre envie du moment !
+  </p>
   <div class="gap-10 columns-1 sm:columns-2">
     <div 
       v-for="need in firstNeeds"

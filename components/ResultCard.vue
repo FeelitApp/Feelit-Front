@@ -71,7 +71,10 @@ async function submitData () {
         }"
       >
         <div class="flex flex-col px-8 py-6 bg-light-pink rounded-xl">
-          <h1 class="mb-4 text-xl font-bold text-center font-grotesk">Récapitulatif</h1>
+          <h1 class="mb-3 text-xl font-bold text-center font-grotesk">Récapitulatif</h1>
+          <p class="mx-auto mb-4 text-sm text-center font-grotesk">
+            Voici le récapitulatif de votre météo émotionnelle du jour. Si vous le souhaitez, vous pouvez ajouter un commentaire personnel sur le contexte de votre introspection !
+          </p>
           <p class="font-grotesk"><strong>Sensation :</strong><br/>{{ quizData.sensationData.content }}</p>
           <p class="font-grotesk"><strong>Émotion :</strong> {{ quizData.emotionData.content + ' ' + quizData.feelingData.emoji }}</p>
           <p class="font-grotesk"><strong>Besoin :</strong><br/>{{ quizData.needData.content }}</p>

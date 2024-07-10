@@ -31,9 +31,12 @@ onMounted(() => {
 <template>
   <div
       class="rounded-xl border-0 sm:border-2 sm:border-black overflow-hidden shadow-none sm:shadow-[4px_4px_0_rgba(0,0,0,1)] flex flex-col sm:px-12 sm:py-12 lg:mb-12">
-    <h2 class="mx-auto mb-8 text-3xl font-semibold text-center font-grotesk">
+    <h2 class="mx-auto mb-2 text-3xl font-semibold text-center font-grotesk">
       Comment vous sentez-vous ?
     </h2>
+    <p class="mx-auto mb-8 text-center font-grotesk">
+      Inspirez... Soufflez. Portez votre attention sur vos sensations physiques. Parmi les options proposées ci-dessous, quelle est celle qui se rapproche le plus de ce que vous vivez en cet instant ?
+    </p>
 
     <div v-for="sensation in data">
       <ul
