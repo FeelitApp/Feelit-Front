@@ -1,10 +1,14 @@
-# Nuxt 3 Minimal Starter
+# Feelit
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Some people, for a variety of reasons, find it difficult to identify the feelings they are experiencing, and are unable to find the words to describe what is driving them at any given moment. In psychology, it is generally accepted that in order to feel fulfilled and more at peace with ourselves, it is beneficial to know ourselves. That's where Feelit comes in. 
 
-## Setup
+We have designed Feelit as a tool to help you identify your emotions, inspired by the Wheel of Emotions developed by the American psychologist Robert Plutchik in 1980. In the form of a short questionnaire, designed as a 'funnel' - from the most general to the most specific - Feelit leads the user to identify the emotion that is running through him or her, and then to question the best way to deal with it, in particular by suggesting a correspondence with human needs. 
 
-Make sure to install the dependencies:
+This repository is the frontend part of Feelit app, developed with Nuxt 3.
+
+
+## Installation
+
 
 ```bash
 # npm
@@ -19,10 +23,10 @@ yarn install
 # bun
 bun install
 ```
+    
+## Usage
 
-## Development Server
-
-Start the development server on `http://localhost:3000`:
+To launch development server locally:
 
 ```bash
 # npm
@@ -38,38 +42,32 @@ yarn dev
 bun run dev
 ```
 
-## Production
 
-Build the application for production:
+## Running Tests
 
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
+Prerequisites:
+- Vitest framework installed
+To run tests, run the following command
 
 ```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
+  npm run test
 ```
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+
+## Authors
+
+- [@Darondouche](https://github.com/Darondouche)
+- [@justine-rgl](https://github.com/justine-rgl)
+- [@TheoSeuge](https://github.com/TheoSeuge)
+
+
+## Support
+
+For support, email feelit.ada@gmail.com or use the contact form available on our website.
+
+
+## Links
+
+- [Feelit](https://feelit-app.com/)
+- [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction)
+- [Vitest documentation](https://vitest.dev/guide/)
