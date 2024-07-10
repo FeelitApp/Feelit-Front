@@ -44,10 +44,12 @@ bun run dev
 
 ## Screenshots
 
-![Homepage](https://github.com/FeelitApp/Feelit-Front/assets/115532914/389ea11b-7f1a-4845-b25e-6feb88fbcc4b | width=250)
-![Dashboard](https://github.com/FeelitApp/Feelit-Front/assets/115532914/10ed4aa6-8b6d-4d77-afa6-ea4d32678eca  | width=250)
-![Questionnaire lvl #1 - Sensations](https://github.com/FeelitApp/Feelit-Front/assets/115532914/375c6a2f-801c-4cc8-9165-f7950f8fefae  | width=250)
-![Questionnaire lvl #3 - Needs](https://github.com/FeelitApp/Feelit-Front/assets/115532914/aee46678-15dc-48c7-a7c5-c62a9b742472  | width=250)
+![Homepage](https://github.com/FeelitApp/Feelit-Front/assets/115532914/389ea11b-7f1a-4845-b25e-6feb88fbcc4b)
+![Dashboard](https://github.com/FeelitApp/Feelit-Front/assets/115532914/10ed4aa6-8b6d-4d77-afa6-ea4d32678eca)
+![Questionnaire lvl #1 - Sensations](https://github.com/FeelitApp/Feelit-Front/assets/115532914/375c6a2f-801c-4cc8-9165-f7950f8fefae)
+![Questionnaire lvl #3 - Needs](https://github.com/FeelitApp/Feelit-Front/assets/115532914/aee46678-15dc-48c7-a7c5-c62a9b742472)
+
+<img src="[https://example.com/image.png](https://github.com/FeelitApp/Feelit-Front/assets/115532914/389ea11b-7f1a-4845-b25e-6feb88fbcc4b)" alt="Homepage" width="300"/>
 
 
 ## Running Tests
